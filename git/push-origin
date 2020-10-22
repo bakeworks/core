@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
 sh git/commit
-git remote add origin https://github.com/bakeworks/core.git
+git remote add origin https://github.com:bakeworks/core.git
 git push -u origin main
