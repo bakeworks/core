@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+# creates branch given in argument
+# see https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
+if [[ $# -eq 1 ]]; then
+    echo "merging branch '$1'"
+else
+    echo 'name of branch must be given'
+    exit 1
+fi
+
+if ! git branch | grep $1; then
+    echo "branch $1 not found"
+    exit 1
+fi
+
+current=$(git rev-parse --abbrev-ref HEAD)
+echo "current branch is $current"
+
+if [[ $current -ne $1 ]]; then
+    echo "branch $1 is not the current branch"
+    exit 1
+fi
+
+if [[ $current -eq master ]]; then
+    echo "cannot merge master with master"
+    exit 1
+fi
+
+# make sure current branch is committed
+# sh git/commit
+
+# switch to master
+# git checkout master
+
+# merge given branch with master
+# git merge $1

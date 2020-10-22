@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+
+# creates branch given in argument
+# see https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
+if [[ $# -eq 1 ]]; then
+    echo "creating branch '$1'"
+else
+    echo 'name of branch must be given'
+    exit 1
+fi
+
+if git branch | grep $1; then
+    echo "branch '$1' already exists"
+    exit 1
+fi
+
+current=$(git rev-parse --abbrev-ref HEAD)
+echo "current branch is '$current'"
+
+# make sure current branch is committed
+sh git/commit
+
+# create the branch
+git branch $1
+
+# checkout the branch
+git checkout $1
+
+
+
+

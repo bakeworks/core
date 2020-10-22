@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+sh git/commit
+git remote add origin https://github.com/balmoral/bakeworks-server-express.git
+git push -u origin master
+
+
+
+
+
