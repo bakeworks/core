@@ -13,6 +13,7 @@ yarn-error.log*
 .nyc_output
 coverage
 build/
+git
 
 # Editor directories and files
 .history
