@@ -31,8 +31,8 @@ fi
 # make sure current branch is committed
 # sh git/commit
 
-# switch to master
-# git checkout master
+# switch to main
+# git checkout main
 
-# merge given branch with master
+# merge given branch with main
 # git merge $1

@@ -1,1 +1,1 @@
-require('./lib/util/json.js')
+require('./lib')
