@@ -3,5 +3,11 @@
   "description": "BakeWorks core library for client, server and console.",
   "version": "1.0.0",
   "main": "index.js",
-  "license": ""
+  "license": "",
+  "dependencies": {
+    "eslint": "^7.12.0"
+  },
+  "repository": "git@github.com:bakeworks/core.git",
+  "author": "bakeworks <mail@bake.works>",
+  "private": true
 }
