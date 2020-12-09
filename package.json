@@ -2,7 +2,6 @@
   "name": "bakeworks-core",
   "description": "BakeWorks core library for client, server and console.",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "",
   "dependencies": {
     "eslint": "^7.12.0"
