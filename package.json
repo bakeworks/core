@@ -3,7 +3,7 @@
   "description": "BakeWorks core library for client, server and console.",
   "version": "1.0.0",
   "license": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "eslint": "^7.12.0"
   },
