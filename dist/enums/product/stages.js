@@ -1,7 +1,26 @@
-import string from '../../util/string';
-import origins from './origins';
-import status from './status';
-import batching from './batching';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _string = require('../../util/string');
+
+var _string2 = _interopRequireDefault(_string);
+
+var _origins = require('./origins');
+
+var _origins2 = _interopRequireDefault(_origins);
+
+var _status = require('./status');
+
+var _status2 = _interopRequireDefault(_status);
+
+var _batching = require('./batching');
+
+var _batching2 = _interopRequireDefault(_batching);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
 Stages of production:
@@ -37,21 +56,21 @@ function instantiate(code, sequence) {
   const requiresIngredients = requiresRecipe && code !== BAKE_CODE;
   const isInputCounted = code === BAKE_CODE;
   const isCounted = code === SHAPE_CODE || code === BAKE_CODE;
-  let batchTypes = batching.all;
-  let defaultBatchSizing = batching.VARIABLE;
+  let batchTypes = _batching2.default.all;
+  let defaultBatchSizing = _batching2.default.VARIABLE;
   switch (code) {
     case BAKE_CODE:
-      defaultBatchSizing = batching.NONE;
+      defaultBatchSizing = _batching2.default.NONE;
     case SHAPE_CODE:
-      batchTypes = [batching.FIXED];
-      defaultBatchSizing = batching.FIXED;
+      batchTypes = [_batching2.default.FIXED];
+      defaultBatchSizing = _batching2.default.FIXED;
     case WEIGH_CODE:
       batchTypes = [];
-      defaultBatchSizing = batching.NONE;
+      defaultBatchSizing = _batching2.default.NONE;
   }
   return {
     code: code,
-    label: string.capitalize(code),
+    label: _string2.default.capitalize(code),
     sequence: sequence,
     hasItemWeight: code === SHAPE_CODE,
     hasItemsPerBatch: code === SHAPE_CODE,
@@ -62,8 +81,8 @@ function instantiate(code, sequence) {
     inputs: null, // lazy init below
     outputs: null, // lazy init below,
     batchTypes: batchTypes,
-    defaultOrigin: code === WEIGH_CODE ? origins.SUPPLIED : origins.PRODUCED,
-    defaultStatus: code === BAKE_CODE ? status.FINISHED : status.INGREDIENT,
+    defaultOrigin: code === WEIGH_CODE ? _origins2.default.SUPPLIED : _origins2.default.PRODUCED,
+    defaultStatus: code === BAKE_CODE ? _status2.default.FINISHED : _status2.default.INGREDIENT,
     defaultBatchSizing: defaultBatchSizing,
     allowPartialFixedBatch: code !== WEIGH_CODE, // weighing has no batches
     requiresRecipe: requiresRecipe,
@@ -144,7 +163,7 @@ function getOutputStages(code) {
   }
 }
 
-export default {
+exports.default = {
   WEIGH_CODE,
   MIX_CODE,
   FERMENT_CODE,

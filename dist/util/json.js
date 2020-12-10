@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 // handles circular references
 function stringify(obj) {
   const b = false;
@@ -21,7 +26,7 @@ function stringify(obj) {
   return JSON.stringify(obj, getCircularReplacer());
 }
 
-export default {
+exports.default = {
   stringify
 };
 //# sourceMappingURL=json.js.map

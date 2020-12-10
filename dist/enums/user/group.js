@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 User groups:
   * administrator

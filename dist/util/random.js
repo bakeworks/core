@@ -1,4 +1,14 @@
-import number from './number';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _number = require('./number');
+
+var _number2 = _interopRequireDefault(_number);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function int(max = Number.MAX_SAFE_INTEGER) {
   return Math.round(Math.random() * max);
@@ -37,14 +47,14 @@ function shuffle(arg) {
 
 function uuid(length = 16) {
   var uuid = '';
-  const h = number.HEX_DIGITS.length - 1;
+  const h = _number2.default.HEX_DIGITS.length - 1;
   for (let i = 0; i < length; i++) {
-    uuid += number.HEX_DIGITS[randomInt(h)];
+    uuid += _number2.default.HEX_DIGITS[randomInt(h)];
   }
   return uuid;
 }
 
-export default {
+exports.default = {
   int,
   intBetween,
   element,

@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 function tag(t, content, style = null) {
   const styleStr = style ? ` style="${style}"` : '';
   return `<${t}${styleStr}>${typeof content === 'function' ? content() : content}</${t}>`;
@@ -35,7 +40,7 @@ function objectsToHtmlTable(objs, args = {}) {
   return tag('table', rows.join(''), style.table);
 }
 
-export default {
+exports.default = {
   tag,
   div,
   objectsToHtmlTable

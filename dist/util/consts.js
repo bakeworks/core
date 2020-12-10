@@ -1,4 +1,9 @@
-export default {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
   TITLE: 'BakeWorks',
 
   MIN_PRIORITY: 1,

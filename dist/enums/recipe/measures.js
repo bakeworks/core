@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 Product (recipe) measures:
   * bakers

@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 /*
 Product status:
   * finished
@@ -30,7 +35,7 @@ const all = [finished, ingredient];
 const map = {};
 all.forEach(x => map[x.code] = x);
 
-export default {
+exports.default = {
   FINISED_CODE,
   INGREDIENT_CODE,
   finished,

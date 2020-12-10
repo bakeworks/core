@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 /*
 Product origins:
   * produced
@@ -31,7 +36,7 @@ const map = {};
 all.forEach(x => map[x.code] = x);
 const DEFAULT = produced;
 
-export default {
+exports.default = {
   PRODUCED_CODE,
   SUPPLIED_CODE,
   produced,

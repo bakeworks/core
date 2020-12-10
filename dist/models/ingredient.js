@@ -36,4 +36,5 @@ function cost_s(ingredient) {
   '%0.4f' % cost
 }
 */
+"use strict";
 //# sourceMappingURL=ingredient.js.map

@@ -1,3 +1,5 @@
+'use strict';
+
 const { origins, stages, status } = require('../enums/product');
 
 function populate(product) {

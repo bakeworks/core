@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   hasXeroInvoicing: customer => {
     return customer.xero_invoicing === 'Y';

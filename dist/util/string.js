@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 function capitalise(str) {
   return `${str[0].toUpperCase()}${str.slice(1)}`;
 }
@@ -48,7 +53,7 @@ function gte(a, b, ignorecase = true) {
   return cmp(a, b, ignorecase) >= 1;
 }
 
-export default {
+exports.default = {
   capitalise,
   camelCase,
   pluralise,
