@@ -1,6 +1,6 @@
 const product = require('./product')
 
-module.exports = {
+exports = {
   product,
   recipe: require('./recipe'),
   user: require('./user'),

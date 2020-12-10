@@ -1,5 +1,3 @@
-const group = require('./group')
-
 module.exports = {
-  group
+  group: require('./group')
 }

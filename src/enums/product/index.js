@@ -1,4 +1,4 @@
-module.exports = {
+exports = {
   batching: require('./batching'),
   origins: require('./origins'),
   stages: require('./stages'),

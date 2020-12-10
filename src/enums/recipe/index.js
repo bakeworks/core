@@ -1,5 +1,3 @@
-const measures = require('./measures')
-
 module.exports = {
-  measures
+  measures: require('./measures')
 }
