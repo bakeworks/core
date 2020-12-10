@@ -32,7 +32,7 @@ const NONE_CODE = 'None'
 const FIXED_CODE = 'Fixed'
 const VARIABLE_CODE = 'Variable'
 const STEPPED_CODE = 'Stepped'
-const ALL_CODES = [NONE_CODE, FIXED_CODE, VARIABLE_CODE, STEPPED_CODE]
+const ALL_CODES = [ NONE_CODE, FIXED_CODE, VARIABLE_CODE, STEPPED_CODE ]
 const DEFAULT_MAX_SIZE = 80
 
 function instantiate(type, min, max, step = 0, partial = false) {
@@ -48,7 +48,7 @@ function instantiate(type, min, max, step = 0, partial = false) {
     isFixed: type === FIXED_CODE,
     isVariable: type === VARIABLE_CODE,
     isStepped: type === STEPPED_CODE,
-    isPartial: partal
+    isPartial: partial
   }
 }
 
@@ -113,6 +113,10 @@ module.exports = {
   STEPPED_CODE,
   ALL_CODES,
   DEFAULT_MAX_SIZE,
-  none, fixed, variable, stepped,
-  validate, normalise
+  none,
+  fixed,
+  variable,
+  stepped,
+  validate,
+  normalise
 }
