@@ -1,6 +1,6 @@
 module.exports = {
   // product: require('./product'),
-  // recipe: require('./recipe'),
+  recipe: require('./recipe'),
   user: require('./user'),
   bool: require('./bool')
 }
