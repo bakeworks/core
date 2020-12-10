@@ -31,7 +31,7 @@ const map = {}
 all.forEach(x => map[x.code] = x)
 const DEFAULT = produced
 
-export default {
+module.exports = {
   PRODUCED_CODE,
   SUPPLIED_CODE,
   produced,

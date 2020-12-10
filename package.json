@@ -5,23 +5,6 @@
   "license": "",
   "main": "lib/index.js",
   "dependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.10",
-    "@babel/register": "^7.12.10",
-    "@babel/runtime": "^7.12.5",
-    "cross-env": "^7.0.3",
-    "eslint": "^7.12.0"
-  },
-  "browser": "./lib/index.js",
-  "module": "./module/index.js",
-  "scripts": {
-    "build-browser": "cross-env BABEL_ENV=browser babel ./src --out-dir ./lib --source-maps --copy-files",
-    "build-module": "cross-env BABEL_ENV=module babel ./src --out-dir ./module --source-maps --copy-files",
-    "build-node": "babel ./src --out-dir ./dist --source-maps --copy-files",
-    "build": "npm run build-node && npm run build-browser && npm run build-module"
   },
   "repository": "git@github.com:bakeworks/core.git",
   "author": "bakeworks <mail@bake.works>",

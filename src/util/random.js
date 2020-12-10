@@ -1,4 +1,4 @@
-import number from './number'
+const number = require('./number')
 
 function int(max = Number.MAX_SAFE_INTEGER) {
   return Math.round(Math.random() * max)  
@@ -42,7 +42,7 @@ function uuid(length = 16) {
   return uuid
 }
 
-export default {
+module.exports = {
   int,
   intBetween,
   element,

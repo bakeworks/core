@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   TITLE: 'BakeWorks',
 
   MIN_PRIORITY: 1,

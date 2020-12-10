@@ -1,12 +1,12 @@
-import calendar from './calendar'
-import consts from './consts'
-import html from './html'
-import json from './json'
-import number from './number'
-import random from './random'
-import string from './string'
+const calendar = require('./calendar')
+const consts = require('./consts')
+const html = require('./html')
+const json = require('./json')
+const number = require('./number')
+const random = require('./random')
+const string = require('./string')
 
-export default {
+module.exports = {
   calendar,
   consts,
   html,

@@ -1,9 +1,9 @@
-import batching from './batching'
-import origins from './origins'
-import stages from './stages'
-import status from './status'
+const batching = require('./batching')
+const origins = require('./origins')
+const stages = require('./stages')
+const status = require('./status')
 
-export default {
+module.exports = {
   batching,
   origins,
   stages,

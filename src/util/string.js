@@ -50,7 +50,7 @@ function gte (a, b, ignorecase = true) {
   return cmp(a, b, ignorecase) >= 1
 }
 
-export default {
+module.exports = {
   capitalise,
   camelCase,
   pluralise,

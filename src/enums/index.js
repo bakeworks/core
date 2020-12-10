@@ -1,9 +1,9 @@
-import product from './product'
-import recipe from './recipe'
-import user from './user'
-import bool from './bool'
+const product = require('./product')
+const recipe = require('./recipe')
+const user = require('./user')
+const bool = require('./bool')
 
-export default {
+module.exports = {
   product,
   recipe,
   user,

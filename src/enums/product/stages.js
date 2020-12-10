@@ -1,7 +1,7 @@
-import string from '../../util/string'
-import origins from './origins'
-import status from './status'
-import batching from './batching'
+const string = require('../../util/string')
+const origins = require('./origins')
+const status = require('./status')
+const batching = require('./batching')
 
 /*
 Stages of production:
@@ -145,7 +145,7 @@ function getOutputStages(code) {
   }
 }
 
-export default {
+module.exports = {
   WEIGH_CODE,
   MIX_CODE,
   FERMENT_CODE,

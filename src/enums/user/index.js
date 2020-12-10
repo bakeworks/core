@@ -1,5 +1,5 @@
-import group from './group'
+const group = require('./group')
 
-export default {
+module.exports = {
   group
 }

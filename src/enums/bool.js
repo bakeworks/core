@@ -28,7 +28,7 @@ const all = [instantiate(TRUE_CODE, 'true'), instantiate(FALSE_CODE, 'false')]
 const map = {}
 all.forEach(x => map[x.code] = x)
 
-export default {
+module.exports = {
   TRUE_CODE,
   FALSE_CODE,
   all,

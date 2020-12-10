@@ -1,7 +1,7 @@
-import enums from './enums'
-import util from './util'
+const enums = require('./enums')
+const util = require('./util')
 
-export default {
+module.exports = {
   enums,
   util
 }

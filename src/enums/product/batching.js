@@ -1,4 +1,4 @@
-import number from '../../util/number'
+const number = require('../../util/number')
 
 /*
 Production batch sizing:
@@ -106,7 +106,7 @@ function normalise(type, min, max, step, partial) {
   }
 }
 
-export default {
+module.exports = {
   NONE_CODE,
   FIXED_CODE,
   VARIABLE_CODE,

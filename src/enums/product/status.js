@@ -30,7 +30,7 @@ const all = [finished, ingredient]
 const map = {}
 all.forEach(x => map[x.code] = x)
 
-export default {
+module.exports = {
   FINISED_CODE,
   INGREDIENT_CODE,
   finished,

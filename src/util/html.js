@@ -64,7 +64,7 @@ function objectsToHtmlTable(objs, args = {}) {
   )
 }
 
-export default {
+module.exports = {
   tag,
   div,
   objectsToHtmlTable

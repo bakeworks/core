@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/enums/user/index.js"],"names":["group"],"mappings":"AAAA,OAAOA,KAAP,MAAkB,SAAlB;AAEA,eAAe;AACbA,EAAAA,KAAK,EAALA;AADa,CAAf","sourcesContent":["import group from './group'\n\nexport default {\n  group\n}"],"file":"index.js"}

@@ -1,5 +1,5 @@
-import measures from './measures'
+const measures = require('./measures')
 
-export default {
+module.exports = {
   measures
 }
