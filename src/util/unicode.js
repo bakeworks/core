@@ -27,6 +27,6 @@ module.exports = {
    DIAMOND_HOLLOW: '\u2756', // '\u2b26' // '\u20DF'
   
   // app specific
-   STANDING_ORDER: DIAMOND_HOLLOW
+   STANDING_ORDER: this.DIAMOND_HOLLOW
 }
 
