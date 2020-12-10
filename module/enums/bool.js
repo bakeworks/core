@@ -11,7 +11,6 @@ Origin properties
   isActual
 }
 */
-
 const TRUE_CODE = 'T';
 const FALSE_CODE = 'F';
 
@@ -27,7 +26,6 @@ function instantiate(code, label) {
 const all = [instantiate(TRUE_CODE, 'true'), instantiate(FALSE_CODE, 'false')];
 const map = {};
 all.forEach(x => map[x.code] = x);
-
 export default {
   TRUE_CODE,
   FALSE_CODE,

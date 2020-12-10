@@ -1,8 +1,10 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
+
 /*
 Product origins:
   * produced
@@ -16,7 +18,6 @@ Origin properties
   isSupplied
 }
 */
-
 const PRODUCED_CODE = 'P';
 const SUPPLIED_CODE = 'S';
 
@@ -35,8 +36,7 @@ const all = [supplied, produced];
 const map = {};
 all.forEach(x => map[x.code] = x);
 const DEFAULT = produced;
-
-exports.default = {
+var _default = {
   PRODUCED_CODE,
   SUPPLIED_CODE,
   produced,
@@ -45,4 +45,5 @@ exports.default = {
   map,
   DEFAULT
 };
+exports.default = _default;
 //# sourceMappingURL=origins.js.map

@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _group = require('./group');
+var _group = _interopRequireDefault(require("./group"));
 
-var _group2 = _interopRequireDefault(_group);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  group: _group2.default
+var _default = {
+  group: _group.default
 };
+exports.default = _default;
 //# sourceMappingURL=index.js.map

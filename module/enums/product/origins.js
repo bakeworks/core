@@ -11,7 +11,6 @@ Origin properties
   isSupplied
 }
 */
-
 const PRODUCED_CODE = 'P';
 const SUPPLIED_CODE = 'S';
 
@@ -30,7 +29,6 @@ const all = [supplied, produced];
 const map = {};
 all.forEach(x => map[x.code] = x);
 const DEFAULT = produced;
-
 export default {
   PRODUCED_CODE,
   SUPPLIED_CODE,

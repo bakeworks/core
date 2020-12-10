@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
 User groups:
@@ -6,12 +6,11 @@ User groups:
   * manager
   * staff
 */
-
 const ADMINISTRATOR_CODE = 'administrator';
 const MANAGER_CODE = 'manager';
 const STAFF_CODE = 'staff';
-
 const WRITE_PERMISSION_CODE = 'write'; // implies read
+
 const READ_PERMISSION_CODE = 'read';
 const NO_PERMISSION_CODE = 'none';
 
@@ -45,7 +44,6 @@ const all = [administrator, manager, staff];
 const map = {};
 all.forEach(x => map[x.code] = x);
 const DEFAULT = staff;
-
 module.exports = {
   ADMINISTRATOR_CODE,
   MANAGER_CODE,

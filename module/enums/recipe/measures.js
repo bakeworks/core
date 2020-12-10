@@ -11,7 +11,6 @@ Origin properties
   isActual
 }
 */
-
 const BAKERS_CODE = 'B';
 const ACTUAL_CODE = 'A';
 
@@ -30,7 +29,6 @@ const all = [bakers, actual];
 const map = {};
 all.forEach(x => map[x.code] = x);
 const DEFAULT = bakers;
-
 module.exports = {
   BAKERS_CODE,
   ACTUAL_CODE,

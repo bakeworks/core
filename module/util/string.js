@@ -8,9 +8,9 @@ function pluralise(count, singular, plural) {
   } else {
     return plural === undefined ? singular + 's' : plural;
   }
-}
+} // returns string with only the digits from given string
 
-// returns string with only the digits from given string
+
 function digits(string) {
   return string.replace(/\D/g, ''); // \D is anything but a digit
 }
@@ -19,9 +19,9 @@ function camelCase(s) {
   return s.replace(/([-_][a-z])/ig, $1 => {
     return $1.toUpperCase().replace('-', '').replace('_', '');
   });
-}
+} // TODO: locale
 
-// TODO: locale
+
 function cmp(_a, _b, ignorecase = true) {
   const a = ignorecase ? _a.toUpperCase() : _a;
   const b = ignorecase ? _b.toUpperCase() : _b;

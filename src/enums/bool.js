@@ -20,7 +20,7 @@ function instantiate(code, label) {
     code: code,
     label: label,
     isTrue: code === TRUE_CODE,
-    isFalse: code === FALSE_CODE,
+    isFalse: code === FALSE_CODE
   }
 }
 

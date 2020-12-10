@@ -1,4 +1,8 @@
-const { origins, stages, status } = require('../enums/product');
+const {
+  origins,
+  stages,
+  status
+} = require('../enums/product');
 
 function populate(product) {
   product.status = status.map[product.status_code];

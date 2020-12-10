@@ -1,31 +1,25 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _product = require('./product');
+var _product = _interopRequireDefault(require("./product"));
 
-var _product2 = _interopRequireDefault(_product);
+var _recipe = _interopRequireDefault(require("./recipe"));
 
-var _recipe = require('./recipe');
+var _user = _interopRequireDefault(require("./user"));
 
-var _recipe2 = _interopRequireDefault(_recipe);
+var _bool = _interopRequireDefault(require("./bool"));
 
-var _user = require('./user');
-
-var _user2 = _interopRequireDefault(_user);
-
-var _bool = require('./bool');
-
-var _bool2 = _interopRequireDefault(_bool);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  product: _product2.default,
-  recipe: _recipe2.default,
-  user: _user2.default,
-  bool: _bool2.default
+var _default = {
+  product: _product.default,
+  recipe: _recipe.default,
+  user: _user.default,
+  bool: _bool.default
 };
+exports.default = _default;
 //# sourceMappingURL=index.js.map

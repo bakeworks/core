@@ -1,8 +1,10 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
+
 /*
 Product status:
   * finished
@@ -16,7 +18,6 @@ Status properties
   isIngredient
 }
 */
-
 const FINISHED_CODE = 'F';
 const INGREDIENT_CODE = 'I';
 
@@ -34,8 +35,7 @@ const ingredient = instantiate(INGREDIENT_CODE, 'Ingredient');
 const all = [finished, ingredient];
 const map = {};
 all.forEach(x => map[x.code] = x);
-
-exports.default = {
+var _default = {
   FINISED_CODE,
   INGREDIENT_CODE,
   finished,
@@ -43,4 +43,5 @@ exports.default = {
   all,
   map
 };
+exports.default = _default;
 //# sourceMappingURL=status.js.map

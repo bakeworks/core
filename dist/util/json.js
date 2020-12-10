@@ -1,14 +1,18 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
+
 // handles circular references
 function stringify(obj) {
   const b = false;
+
   if (b) {
     return JSON.stringify(obj);
   }
+
   const getCircularReplacer = () => {
     const seen = new WeakSet();
     let count = 0;
@@ -18,15 +22,19 @@ function stringify(obj) {
           count += 1;
           return `circular#${count}:${Object.keys(value)}`;
         }
+
         seen.add(value);
       }
+
       return value;
     };
   };
+
   return JSON.stringify(obj, getCircularReplacer());
 }
 
-exports.default = {
+var _default = {
   stringify
 };
+exports.default = _default;
 //# sourceMappingURL=json.js.map

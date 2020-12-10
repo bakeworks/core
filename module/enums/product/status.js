@@ -11,7 +11,6 @@ Status properties
   isIngredient
 }
 */
-
 const FINISHED_CODE = 'F';
 const INGREDIENT_CODE = 'I';
 
@@ -29,7 +28,6 @@ const ingredient = instantiate(INGREDIENT_CODE, 'Ingredient');
 const all = [finished, ingredient];
 const map = {};
 all.forEach(x => map[x.code] = x);
-
 export default {
   FINISED_CODE,
   INGREDIENT_CODE,

@@ -2,20 +2,19 @@
   "env": {
     "development": {
       "presets": [
-        ["babel-preset-env", {
+        ["@babel/preset-env", {
           "targets": {
-          "node": "6.10"
+          "node": "14.15.1"
           }
         }]
       ],
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-class-properties"        
+        "@babel/transform-runtime"
       ]
     },
     "browser": {
       "presets": [
-        ["babel-preset-env", {
+        ["@babel/preset-env", {
           "targets": {
             "browsers": "last 2 versions, ie 10-11"
           },
@@ -23,22 +22,20 @@
         }]
       ],
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-class-properties"        
+        "@babel/transform-runtime"
       ]
     },
     "module": {
       "presets": [
-        ["babel-preset-env", {
+        ["@babel/preset-env", {
           "targets": {
-            "node": "6.10"
+            "node": "14.15.1"
           },
           "modules": false
         }]
       ],
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-class-properties"        
+        "@babel/transform-runtime"
       ]
     }
   },

@@ -1,18 +1,22 @@
-'use strict';
+"use strict";
 
 module.exports = {
   users,
-  products, productsById,
-  customers, customersById,
-  recipes, recipesByProductId,
-  ingredients, ingredientsByRecipeId,
-  standingOrders, specialOrders,
+  products,
+  productsById,
+  customers,
+  customersById,
+  recipes,
+  recipesByProductId,
+  ingredients,
+  ingredientsByRecipeId,
+  standingOrders,
+  specialOrders,
   reset,
   getCustomer,
   getProduct,
   init
 };
-
 var users = null;
 var products = null;
 var productsById = null;
@@ -24,7 +28,6 @@ var ingredients = null;
 var ingredientsByRecipeId = null;
 var standingOrders = null;
 var specialOrders = null;
-
 /*
   Arg should be an object whose properties are json strings:
   {
@@ -38,6 +41,7 @@ var specialOrders = null;
   }
   Most likely source is database load (mongodb to json).
 */
+
 function init(arg) {
   reset();
   initUsers(arg.users);
@@ -88,10 +92,12 @@ function initIngredients(ingredientsJson) {
   ingredients.forEach(ingredient => {
     ingredient.product = getProduct(ingredient.product_id);
     let recipeIngredients = ingredientsByRecipeId.set(ingredient.recipe_id);
+
     if (recipeIngredients === undefined) {
       recipeIngredients = [];
       ingredientsByRecipeId.set(ingredient.recipe_id, recipeIngredients);
     }
+
     recipeIngredients.push(ingredient);
   });
 }

@@ -2,7 +2,6 @@ import string from '../../util/string';
 import origins from './origins';
 import status from './status';
 import batching from './batching';
-
 /*
 Stages of production:
   * prep (was raw/weigh)
@@ -19,13 +18,17 @@ Ref:
 */
 
 const WEIGH_CODE = 'Weigh'; // or scale
+
 const MIX_CODE = 'Mix';
 const FERMENT_CODE = 'Ferment'; // bulk/primary fermentation
+
 const LAYER_CODE = 'Layer'; // or fold
 // const PRESHAPE_CODE = 'preshape' // or rounding - before rest
 // const REST_CODE = 'rest' // before final shape
+
 const SHAPE_CODE = 'Shape'; // or panning
 // const PROOF_CODE = 'proof' // or final ferment
+
 const BAKE_CODE = 'Bake';
 const ASSEMBLE_CODE = 'Assemble';
 const DECORATE_CODE = 'Decorate';
@@ -34,21 +37,26 @@ function instantiate(code, sequence) {
   const requiresRecipe = code !== WEIGH_CODE;
   /* baked (finished) products are allowede to have have unspecified ingredients
    * but all other actions with recipe require ingredients */
+
   const requiresIngredients = requiresRecipe && code !== BAKE_CODE;
   const isInputCounted = code === BAKE_CODE;
   const isCounted = code === SHAPE_CODE || code === BAKE_CODE;
   let batchTypes = batching.all;
   let defaultBatchSizing = batching.VARIABLE;
+
   switch (code) {
     case BAKE_CODE:
       defaultBatchSizing = batching.NONE;
+
     case SHAPE_CODE:
       batchTypes = [batching.FIXED];
       defaultBatchSizing = batching.FIXED;
+
     case WEIGH_CODE:
       batchTypes = [];
       defaultBatchSizing = batching.NONE;
   }
+
   return {
     code: code,
     label: string.capitalize(code),
@@ -59,13 +67,16 @@ function instantiate(code, sequence) {
     isWeighed: !isCounted,
     isInputCounted: isInputCounted,
     isInputWeighed: !isInputCounted,
-    inputs: null, // lazy init below
-    outputs: null, // lazy init below,
+    inputs: null,
+    // lazy init below
+    outputs: null,
+    // lazy init below,
     batchTypes: batchTypes,
     defaultOrigin: code === WEIGH_CODE ? origins.SUPPLIED : origins.PRODUCED,
     defaultStatus: code === BAKE_CODE ? status.FINISHED : status.INGREDIENT,
     defaultBatchSizing: defaultBatchSizing,
-    allowPartialFixedBatch: code !== WEIGH_CODE, // weighing has no batches
+    allowPartialFixedBatch: code !== WEIGH_CODE,
+    // weighing has no batches
     requiresRecipe: requiresRecipe,
     requiresIngredients: requiresIngredients,
     isWeigh: code === WEIGH_CODE,
@@ -89,8 +100,8 @@ const assemble = instantiate(ASSEMBLE_CODE, 7);
 const decorate = instantiate(DECORATE_CODE, 8);
 const all = [weigh, mix, ferment, layer, shape, bake]; // assemble decorate
 // const PREBAKE = [weigh, mix, ferment, layer, shape]
-const DEFAULT = bake;
 
+const DEFAULT = bake;
 const map = {};
 all.forEach(x => {
   x.inputs = getInputStages(x.code);
@@ -102,20 +113,29 @@ function getInputStages(code) {
   switch (code) {
     case WEIGH_CODE:
       return [];
+
     case MIX_CODE:
       return [weigh, mix];
+
     case FERMENT_CODE:
-      return [layer]; // why not mix ?
+      return [layer];
+    // why not mix ?
+
     case LAYER_CODE:
       return [weigh, mix];
+
     case SHAPE_CODE:
       return [mix, layer];
+
     case BAKE_CODE:
       return [weigh, shape];
+
     case ASSEMBLE_CODE:
       return [weigh, mix, shape, bake];
+
     case DECORATE_CODE:
       return [weigh, mix, shape, bake, assemble];
+
     default:
       throw new Error(`invalid stage code ${code}`);
   }
@@ -125,20 +145,28 @@ function getOutputStages(code) {
   switch (code) {
     case WEIGH_CODE:
       return [mix, ferment, layer, shape, bake];
+
     case MIX_CODE:
       return [ferment, layer, shape, bake];
+
     case FERMENT_CODE:
       return [mix, layer, shape, bake];
+
     case LAYER_CODE:
       return [mix, ferment, shape, bake];
+
     case SHAPE_CODE:
       return [mix, ferment, layer, bake];
+
     case BAKE_CODE:
       return [assemble, decorate];
+
     case ASSEMBLE_CODE:
       return [decorate];
+
     case DECORATE_CODE:
       return [];
+
     default:
       throw new Error(`invalid stage code ${code}`);
   }

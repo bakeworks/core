@@ -1,31 +1,25 @@
-'use strict';
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _batching = require('./batching');
+var _batching = _interopRequireDefault(require("./batching"));
 
-var _batching2 = _interopRequireDefault(_batching);
+var _origins = _interopRequireDefault(require("./origins"));
 
-var _origins = require('./origins');
+var _stages = _interopRequireDefault(require("./stages"));
 
-var _origins2 = _interopRequireDefault(_origins);
+var _status = _interopRequireDefault(require("./status"));
 
-var _stages = require('./stages');
-
-var _stages2 = _interopRequireDefault(_stages);
-
-var _status = require('./status');
-
-var _status2 = _interopRequireDefault(_status);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  batching: _batching2.default,
-  origins: _origins2.default,
-  stages: _stages2.default,
-  status: _status2.default
+var _default = {
+  batching: _batching.default,
+  origins: _origins.default,
+  stages: _stages.default,
+  status: _status.default
 };
+exports.default = _default;
 //# sourceMappingURL=index.js.map
