@@ -1,11 +1,9 @@
-// const enums = require('./enums')
-
 function dummy () {
   return 'DUMMY FN'
 }
 
 module.exports = {
-  // enums,
+  enums: require('./enums'),
   util: require('./util'),
   dummy
 }
