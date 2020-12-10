@@ -1,17 +1,9 @@
-const calendar = require('./calendar')
-const consts = require('./consts')
-const html = require('./html')
-const json = require('./json')
-const number = require('./number')
-const random = require('./random')
-const string = require('./string')
-
 module.exports = {
-  calendar,
-  consts,
-  html,
-  json,
-  number,
-  random,
-  string
+  calendar: require('./calendar'),
+  consts: require('./consts'),
+  html: require('./html'),
+  json: require('./json'),
+  number: require('./number'),
+  random: require('./random'),
+  string: require('./string')
 }
