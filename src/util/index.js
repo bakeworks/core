@@ -5,5 +5,6 @@ module.exports = {
   json: require('./json'),
   number: require('./number'),
   random: require('./random'),
-  string: require('./string')
+  string: require('./string'),
+  unicode: require('./unicode')
 }
