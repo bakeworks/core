@@ -1,3 +1,7 @@
+/*
+ * database utility functions
+ */
+
 // toObjs maybe array or Map.
 // If map it should be keyed by expected values of fromObj[fromProp] and toProp will be ignore
 function resolveJoin (fromName, fromObj, fromProp, toName, toObjs, toProp = '_id') {

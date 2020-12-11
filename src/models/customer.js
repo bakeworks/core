@@ -1,3 +1,5 @@
+const $string = require('../util/string.js')
+
 module.exports = {
   hasXeroInvoicing: customer => {
     return customer.xero_invoicing === 'Y'
@@ -13,5 +15,9 @@ module.exports = {
   
   hasXeroId: customer => {
     return customer.xero_invoicing !== undefined && customer.xero_invoicing.length > 0
+  },
+
+  sortCustomers: (customers, prop = 'name') => {
+    return customers.sort((a, b) => $string.cmp(a[prop], b[prop]))
   }
 }
