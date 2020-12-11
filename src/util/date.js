@@ -1,7 +1,7 @@
 // https://quasar.dev/quasar-utils/date-utils
 // TODO: Quasar has many date utilities built-in
 
-const $qdate = require('quasar').date
+const $qdate = require('./quasar-clone/date')
 const $unicode = require('./unicode')
 
 const YYYYMMDD = 'YYYYMMDD'
