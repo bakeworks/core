@@ -31,7 +31,7 @@ const map = {}
 all.forEach(x => map[x.code] = x)
 
 module.exports = {
-  FINISED_CODE,
+  FINISHED_CODE,
   INGREDIENT_CODE,
   finished,
   ingredient,
