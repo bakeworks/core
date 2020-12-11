@@ -1,5 +1,5 @@
-const $csv = require('../util/csv.js')
-const $date = require('../util/date.js')
+const $csv = require('../util/csv')
+const $date = require('../util/date')
 
 const STANDING_WEEK = 'standing' // special weeks are YYYYMMDD
 
@@ -218,7 +218,6 @@ function itemQuantitiesToCSVs (item) {
 
 module.exports = {
 
-  // consts
   STANDING_WEEK,
   STANDING_LABEL,
   SPECIAL_LABEL,
@@ -235,7 +234,6 @@ module.exports = {
   DAY_TAGS,
   WEEK_TOT_TAG,
 
-  // functions
   itemDebugString,
   isWeekStanding,
   isItemStanding,
