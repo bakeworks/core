@@ -1,7 +1,7 @@
 // https://quasar.dev/quasar-utils/date-utils
 // TODO: Quasar has many date utilities built-in
-const $qdate = null // require('quasar').date
 
+const $qdate = undefined // require('quasar').date
 const $unicode = require('./unicode')
 
 const YYYYMMDD = 'YYYYMMDD'
@@ -13,6 +13,7 @@ const DAY_MONTH_NAME_LONG = 'DD MMMM'
 const DAY_MONTH_NAME_LONG_YEAR = 'DD MMMM YYYY'
 const DEFAULT_FORMAT = YYYYMMDD_DASH
 const NEARBY_WEEKS_SEPARATOR = ` ${$unicode.ARROW_RIGHT} `
+const DEFAULT_N_NEARBY_WEEKS = 9
 
 function extractDate (dateString, argFmt = undefined) {
   var fmt = argFmt
@@ -82,8 +83,6 @@ function endOfWeek (date) {
 function weekFromCurrent (offset) {
   return addWeeks(weekCommencing(new Date()), offset)
 }
-
-const DEFAULT_N_NEARBY_WEEKS = 9
 
 // Returns array of weeks in yyyymmdd format from -2 to +4 weeks away
 function nearbyWeeksDates (nWeeks = DEFAULT_N_NEARBY_WEEKS) {
