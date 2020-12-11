@@ -27,6 +27,5 @@ function objectsById (objects) {
 
 module.exports = {
   resolveJoin,
-  resolveEnum,
   objectsById
 }
