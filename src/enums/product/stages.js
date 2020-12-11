@@ -52,7 +52,7 @@ function instantiate(code, sequence) {
   }
   return {
     code: code,
-    label: string.capitalize(code),
+    label: string.capitalise(code),
     sequence: sequence,
     hasItemWeight: code === SHAPE_CODE,
     hasItemsPerBatch: code === SHAPE_CODE,
