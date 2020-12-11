@@ -1,6 +1,6 @@
 // https://quasar.dev/quasar-utils/date-utils
 // TODO: Quasar has many date utilities built-in
-const $qdate = require('quasar').date
+const $qdate = null // require('quasar').date
 
 const $unicode = require('../util/unicode')
 
