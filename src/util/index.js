@@ -1,6 +1,9 @@
 module.exports = {
   calendar: require('./calendar'),
   consts: require('./consts'),
+  csv: require('./csv'),
+  date: require('./date'),
+  db: require('./db'),
   html: require('./html'),
   json: require('./json'),
   number: require('./number'),
