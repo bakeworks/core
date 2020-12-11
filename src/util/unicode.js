@@ -27,6 +27,7 @@ module.exports = {
    DOUBLE_PIPE: '\u20E6',
    DIAMOND_SOLID: '\u2b25', // '\u20DF'
    DIAMOND_HOLLOW: '\u2b26', // '\u20DF'
+   
    DIAMOND_SOLID_4,
 
   // app specific
