@@ -4,17 +4,17 @@ const $qdate = require('quasar').date
 
 const $unicode = require('../util/unicode')
 
-export const YYYYMMDD = 'YYYYMMDD'
-export const YYYYMMDD_DASH = 'YYYY-MM-DD'
-export const YYYYMMDD_SLASH = 'YYYY/MM/DD'
-export const DAY_MONTH_NAME_SHORT = 'DD MMM'
-export const DAY_MONTH_NAME_SHORT_YEAR = 'DD MMM YYYY'
-export const DAY_MONTH_NAME_LONG = 'DD MMMM'
-export const DAY_MONTH_NAME_LONG_YEAR = 'DD MMMM YYYY'
-export const DEFAULT_FORMAT = YYYYMMDD_DASH
-export const NEARBY_WEEKS_SEPARATOR = ` ${$unicode.ARROW_RIGHT} `
+const YYYYMMDD = 'YYYYMMDD'
+const YYYYMMDD_DASH = 'YYYY-MM-DD'
+const YYYYMMDD_SLASH = 'YYYY/MM/DD'
+const DAY_MONTH_NAME_SHORT = 'DD MMM'
+const DAY_MONTH_NAME_SHORT_YEAR = 'DD MMM YYYY'
+const DAY_MONTH_NAME_LONG = 'DD MMMM'
+const DAY_MONTH_NAME_LONG_YEAR = 'DD MMMM YYYY'
+const DEFAULT_FORMAT = YYYYMMDD_DASH
+const NEARBY_WEEKS_SEPARATOR = ` ${$unicode.ARROW_RIGHT} `
 
-export function extractDate (dateString, argFmt = undefined) {
+function extractDate (dateString, argFmt = undefined) {
   var fmt = argFmt
   if (fmt === undefined) {
     if (dateString.includes('-')) {
@@ -30,63 +30,63 @@ export function extractDate (dateString, argFmt = undefined) {
   return d
 }
 
-export function format (date, fmt) {
+function format (date, fmt) {
   return $qdate.formatDate(date, fmt)
 }
 
-export function today (fmt = YYYYMMDD_DASH) {
+function today (fmt = YYYYMMDD_DASH) {
   return format(new Date(), fmt)
 }
 
-export function labelDayMonthNameConcise (date) {
+function labelDayMonthNameConcise (date) {
   return format(date, DAY_MONTH_NAME_SHORT)
 }
 
-export function labelDayMonthNameVerbose (date) {
+function labelDayMonthNameVerbose (date) {
   return $qdate.formatDate(date, DAY_MONTH_NAME_LONG)
 }
 
-export function addDays (date, days) {
+function addDays (date, days) {
   return $qdate.addToDate(date, { days: days })
 }
 
-export function addWeeks (date, weeks) {
+function addWeeks (date, weeks) {
   return $qdate.addToDate(date, { days: weeks * 7 })
 }
 
-export function addMonths (date, months) {
+function addMonths (date, months) {
   return $qdate.addToDate(date, { month: months })
 }
 
-export function addYears (date, years) {
+function addYears (date, years) {
   return $qdate.addToDate(date, { year: years })
 }
 
-export function weekCommencing (date) {
+function weekCommencing (date) {
   const dow = $qdate.getDayOfWeek(date)
   return addDays(date, -dow)
 }
 
-export function startOfWeek (date) {
+function startOfWeek (date) {
   return weekCommencing(date)
 }
 
-export function weekFinish (date) {
+function weekFinish (date) {
   return addDays(startOfWeek(date), 6)
 }
 
-export function endOfWeek (date) {
+function endOfWeek (date) {
   return weekFinish(date)
 }
 
-export function weekFromCurrent (offset) {
+function weekFromCurrent (offset) {
   return addWeeks(weekCommencing(new Date()), offset)
 }
 
-export const DEFAULT_N_NEARBY_WEEKS = 9
+const DEFAULT_N_NEARBY_WEEKS = 9
 
 // Returns array of weeks in yyyymmdd format from -2 to +4 weeks away
-export function nearbyWeeksDates (nWeeks = DEFAULT_N_NEARBY_WEEKS) {
+function nearbyWeeksDates (nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   const result = []
   for (let i = 0; i < nWeeks; i++) {
     result.push(weekFromCurrent(i))
@@ -94,7 +94,7 @@ export function nearbyWeeksDates (nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   return result
 }
 
-export function nearbyWeeksTags (nWeeks = DEFAULT_N_NEARBY_WEEKS) {
+function nearbyWeeksTags (nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   const result = []
   for (let i = 0; i < nWeeks; i++) {
     const tag = i === 0 ? 'This week' : (i === 1 ? 'Next week' : `+ ${i} weeks`)
@@ -103,7 +103,7 @@ export function nearbyWeeksTags (nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   return result
 }
 
-export function nearbyWeeksLabels (fmt = DEFAULT_FORMAT, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
+function nearbyWeeksLabels (fmt = DEFAULT_FORMAT, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   const result = []
   nearbyWeeksDates(nWeeks).forEach((week, index) => {
     // const tag = index === 0 ? 'This week' : (index === 1 ? 'Next week' : `+ ${index} weeks`)
@@ -113,7 +113,7 @@ export function nearbyWeeksLabels (fmt = DEFAULT_FORMAT, nWeeks = DEFAULT_N_NEAR
   return result
 }
 
-export function weekDates (firstWeekYYYYMMDD, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
+function weekDates (firstWeekYYYYMMDD, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   const firstWeek = extractDate(firstWeekYYYYMMDD, YYYYMMDD)
   const result = []
   for (let i = 0; i < nWeeks; i++) {
@@ -122,6 +122,41 @@ export function weekDates (firstWeekYYYYMMDD, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   return result
 }
 
-export function weekYYYYMMDDs (firstWeekYYYYMMDD, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
+function weekYYYYMMDDs (firstWeekYYYYMMDD, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   return weekDates(firstWeekYYYYMMDD, nWeeks).map(d => format(d, YYYYMMDD))
+}
+
+module.exports = {
+  YYYYMMDD,
+  YYYYMMDD_DASH,
+  YYYYMMDD_SLASH,
+  DAY_MONTH_NAME_SHORT,
+  DAY_MONTH_NAME_SHORT_YEAR,
+  DAY_MONTH_NAME_LONG,
+  DAY_MONTH_NAME_LONG_YEAR,
+  DEFAULT_FORMAT,
+  NEARBY_WEEKS_SEPARATOR,
+  DEFAULT_N_NEARBY_WEEKS,
+
+  extractDate,
+  format,
+  today,
+  labelDayMonthNameConcise,
+  labelDayMonthNameVerbose,
+
+  addDays,
+  addWeeks,
+  addMonths,
+  addYears,
+
+  weekCommencing,
+  startOfWeek,
+  weekFinish,
+  endOfWeek,
+
+  nearbyWeeksDates,
+  nearbyWeeksTags,
+  nearbyWeeksLabels,
+  weekDates,
+  weekYYYYMMDDs
 }
