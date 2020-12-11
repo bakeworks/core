@@ -2,7 +2,7 @@
 // TODO: Quasar has many date utilities built-in
 const $qdate = null // require('quasar').date
 
-const $unicode = require('../util/unicode')
+const $unicode = require('./unicode')
 
 const YYYYMMDD = 'YYYYMMDD'
 const YYYYMMDD_DASH = 'YYYY-MM-DD'
