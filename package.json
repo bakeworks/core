@@ -5,6 +5,7 @@
   "license": "",
   "main": "lib/index.js",
   "dependencies": {
+    "quasar": "^1.14.7"
   },
   "repository": "git@github.com:bakeworks/core.git",
   "author": "bakeworks <mail@bake.works>",
