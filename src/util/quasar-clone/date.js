@@ -18,7 +18,7 @@ const
   reverseToken = /(\[[^\]]*\])|d{1,4}|M{1,4}|m{1,2}|w{1,2}|Qo|Do|D{1,4}|YY(?:YY)?|H{1,2}|h{1,2}|s{1,2}|S{1,3}|Z{1,2}|a{1,2}|[AQExX]|([.*+:?^,\s${}()|\\]+)/g,
   regexStore = {}
 
-const DEFAULT_DATE_LOCALE = require('../../local/en/date')
+const DEFAULT_DATE_LOCALE = require('../locale/en/date')
 
 // substitutes for lang.props.date from quasar lang and Vue
 const lang = { props: { date: DEFAULT_DATE_LOCALE} }
