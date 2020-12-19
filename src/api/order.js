@@ -15,8 +15,8 @@ const SHOW_OPTIONS = [SHOW_ALL, SHOW_NONZERO, SHOW_SPECIAL, SHOW_ZERO]
 const SHOW_OPTIONS_NO_SPECIAL = [SHOW_ALL, SHOW_NONZERO, SHOW_ZERO]
 const PERIOD_FORMAT = $date.DAY_MONTH_NAME_LONG
 
-const ZERO_CSV_QTYS = [0, 0, 0, 0, 0, 0, 0]
-const NULL_CSV_QTYS = [-1, -1, -1, -1, -1, -1, -1]
+const ZERO_QTYS = [0, 0, 0, 0, 0, 0, 0]
+const NULL_QTYS = [-1, -1, -1, -1, -1, -1, -1]
 
 const DAY_TAGS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 const WEEK_TOT_TAG = 'tot'
@@ -149,11 +149,13 @@ function matchingSpecial (standingOrder, specialOrders) {
   )
 }
 
-function mapQtysToDays (q) {
+// Map array quantities to object with DAY_TAGS as keys.
+// Includes weekly total keyed with WEEK_TOT_TAG.
+function mapQtysToDays (quantities) {
   const result = { }
   var i = -1
   DAY_TAGS.forEach(tag => {
-    result[tag] = q[i += 1]
+    result[tag] = quantities[i += 1]
   })
   result[WEEK_TOT_TAG] = q.reduce((sum, v) => sum + parseInt(v), 0)
   return result
@@ -177,10 +179,10 @@ function newItem (customer, product, weekOrPeriod, standingOrder, specialOrder) 
 
 function quantitiesFromCSVs (standingOrder, specialOrder) {
   const standingQuantities = standingOrder === undefined
-    ? ZERO_CSV_QTYS
+    ? ZERO_QTYS
     : $csv.parseIntArray(standingOrder.quantities_csv)
   const specialQuantities = specialOrder === undefined
-    ? NULL_CSV_QTYS
+    ? NULL_QTYS
     : $csv.parseIntArray(specialOrder.quantities_csv)
   const currentQuantities = standingQuantities.slice(0) // clone
   for (let i = 0; i < 7; i++) {
@@ -229,8 +231,8 @@ module.exports = {
   SHOW_OPTIONS,
   SHOW_OPTIONS_NO_SPECIAL,
   PERIOD_FORMAT,
-  ZERO_CSV_QTYS,
-  NULL_CSV_QTYS,
+  ZERO_QTYS,
+  NULL_QTYS,
   DAY_TAGS,
   WEEK_TOT_TAG,
 

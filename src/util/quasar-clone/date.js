@@ -1,5 +1,14 @@
 /* eslint no-fallthrough: 0 */
 
+/*
+ * Modified clone of Quasar utils date.js.
+ * 
+ * Repo: https://github.com/quasarframework
+ * 
+ * Copyright & license: https://github.com/quasarframework/quasar/blob/dev/LICENSE
+ * 
+ */
+
 const
   MILLISECONDS_IN_DAY = 86400000,
   MILLISECONDS_IN_HOUR = 3600000,
@@ -9,29 +18,7 @@ const
   reverseToken = /(\[[^\]]*\])|d{1,4}|M{1,4}|m{1,2}|w{1,2}|Qo|Do|D{1,4}|YY(?:YY)?|H{1,2}|h{1,2}|s{1,2}|S{1,3}|Z{1,2}|a{1,2}|[AQExX]|([.*+:?^,\s${}()|\\]+)/g,
   regexStore = {}
 
-// BakeWorks locale substitutes...
-// TODO: full locale support
-// NB: we need to run front end and back end
-const DATE_LOCALES = {
-  en: {
-    months: [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ],
-    monthsShort: [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ],
-    days: [
-      'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-    ],
-    daysShort: [
-      'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
-    ]
-  }
-}
-
-const DEFAULT_DATE_LOCALE = DATE_LOCALES.en
+const DEFAULT_DATE_LOCALE = require('../../local/en/date')
 
 // substitutes for lang.props.date from quasar lang and Vue
 const lang = { props: { date: DEFAULT_DATE_LOCALE} }
