@@ -201,7 +201,7 @@ function resolvedItem (item, customers, products) {
   return {
     customer: customers.find(e => e._id === item.customerId),
     product: products.find(e => e._id === item.productId),
-    week,
+    week: item.week,
     standing: item.standing,
     current: item.current,
   }
