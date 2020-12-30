@@ -196,6 +196,7 @@ function newItem (customerId, productId, weekOrPeriod, standingOrder, specialOrd
 
 // item as returned by newItem
 // customers and products to resolve customerId and productId
+// returns item with customer and product resolved
 function resolvedItem (item, customers, products) {
   const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
   return {
