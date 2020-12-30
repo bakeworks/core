@@ -160,7 +160,7 @@ function mapQtysToDays (quantities) {
   DAY_TAGS.forEach(tag => {
     result[tag] = quantities[i += 1]
   })
-  result[WEEK_TOT_TAG] = q.reduce((sum, v) => sum + parseInt(v), 0)
+  result[WEEK_TOT_TAG] = quantities.reduce((sum, v) => sum + parseInt(v), 0)
   return result
 }
 
