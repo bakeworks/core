@@ -263,6 +263,7 @@ module.exports = {
   uniqueItemsCount,
   specialItemsCount,
   newItem,
+  resolvedItem,
 
   dayIndex,
   nearbyWeeksAsPeriods,
