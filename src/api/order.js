@@ -185,10 +185,7 @@ function quantitiesFromCSVs (standingOrder, specialOrder) {
 // standingOrder and specialOrders are optional
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
 function newItem (customer, product, weekOrPeriod, standingOrder, specialOrder) {
-  const fn = `api.order.newItem: weekOrPeriod=${JSON.stringify(weekOrPeriod)}`
-  console.log(`${fn}:1:`)
   const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
-  console.log(`${fn}:2: => ${week}}`)
   const item = {
     customer: customer,
     product: product,
@@ -196,7 +193,6 @@ function newItem (customer, product, weekOrPeriod, standingOrder, specialOrder) 
     virgin: true,
     ...quantitiesFromCSVs(standingOrder, specialOrder)
   }
-  console.log(`${fn}:3: returning item=${item}`)
   return item
 }
 
