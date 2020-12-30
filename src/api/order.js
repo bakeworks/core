@@ -194,6 +194,19 @@ function newItem (customerId, productId, weekOrPeriod, standingOrder, specialOrd
   }
 }
 
+// item as returned by newItem
+// customers and products to resolve customerId and productId
+function resolvedItem (item, customers, products) {
+  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
+  return {
+    customer: customers.find(e => e._id === item.customerId),
+    product: products.find(e => e._id === item.productId),
+    week,
+    standing: item.standing,
+    current: item.current,
+  }
+}
+
 // standing and current are objects of form { sun: 0, mon: 1, ... }
 // returns object of form{ standing: '1,2,3,4,5,6,7', special: '-1,-1,3,-1,-1,-1,0'}
 function quantitiesByDayToCSVs (standingByDay, currentByDay) {
