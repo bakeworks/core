@@ -184,16 +184,14 @@ function quantitiesFromCSVs (standingOrder, specialOrder) {
 
 // standingOrder and specialOrders are optional
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newItem (customer, product, weekOrPeriod, standingOrder, specialOrder) {
+function newItem (customerId, productId, weekOrPeriod, standingOrder, specialOrder) {
   const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
-  const item = {
-    customer: customer,
-    product: product,
-    week: week,
-    virgin: true,
+  return {
+    customerId,
+    productId,
+    week,
     ...quantitiesFromCSVs(standingOrder, specialOrder)
   }
-  return item
 }
 
 // standing and current are objects of form { sun: 0, mon: 1, ... }
