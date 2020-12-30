@@ -18,6 +18,9 @@ const PERIOD_FORMAT = $date.DAY_MONTH_NAME_LONG
 const ZERO_QTYS = [0, 0, 0, 0, 0, 0, 0]
 const NULL_QTYS = [-1, -1, -1, -1, -1, -1, -1]
 
+const ZERO_QTYS_CSV = '0,0,0,0,0,0,0'
+const NULL_QTYS_CSV = '-1,-1,-1,-1,-1,-1,-1'
+
 const DAY_TAGS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 const WEEK_TOT_TAG = 'tot'
 
@@ -161,22 +164,6 @@ function mapQtysToDays (quantities) {
   return result
 }
 
-// standingOrder and specialOrders are optional
-// weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newItem (customer, product, weekOrPeriod, standingOrder, specialOrder) {
-  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
-  if (typeof weekOrPeriod === 'object') {
-    console.log(`lib.bakeworks.order.newItem: weekOrPeriod=${JSON.stringify(weekOrPeriod)} => ${week}}`)
-  }
-  return {
-    customer: customer,
-    product: product,
-    week: week,
-    virgin: true,
-    ...quantitiesFromCSVs(standingOrder, specialOrder)
-  }
-}
-
 function quantitiesFromCSVs (standingOrder, specialOrder) {
   const standingQuantities = standingOrder === undefined
     ? ZERO_QTYS
@@ -193,6 +180,25 @@ function quantitiesFromCSVs (standingOrder, specialOrder) {
     standing: mapQtysToDays(standingQuantities),
     current: mapQtysToDays(currentQuantities)
   }
+}
+
+// standingOrder and specialOrders are optional
+// weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
+function newItem (customer, product, weekOrPeriod, standingOrder, specialOrder) {
+  const fn = `api.order.newItem: weekOrPeriod=${JSON.stringify(weekOrPeriod)} => ${week}}`
+  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
+  if (typeof weekOrPeriod === 'object') {
+    console.log(`${fn} => ${week}}`)
+  }
+  const item = {
+    customer: customer,
+    product: product,
+    week: week,
+    virgin: true,
+    ...quantitiesFromCSVs(standingOrder, specialOrder)
+  }
+  console.log(`${fn}: returning item=${item}`)
+  return item
 }
 
 // standing and current are objects of form { sun: 0, mon: 1, ... }
@@ -233,6 +239,8 @@ module.exports = {
   PERIOD_FORMAT,
   ZERO_QTYS,
   NULL_QTYS,
+  ZERO_QTYS_CSV,
+  NULL_QTYS_CSV,
   DAY_TAGS,
   WEEK_TOT_TAG,
 
