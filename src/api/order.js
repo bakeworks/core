@@ -33,7 +33,7 @@ function dayIndex (dayTag) {
 }
 
 function itemDebugString (item) {
-  return `{ customer: ${item.customer.name}, product: ${item.product.name}, week: ${item.week} }`
+  return `item = { customer: ${item.customer.name}, product: ${item.product.name}, week: ${item.week}, standing: ${item.standing}, current: ${item.current}`
 }
 
 // week should be 'standing' or 'YYYYMMDD'
