@@ -4,11 +4,6 @@ When we figure out how to package ES6 we will...
 
 ### Github
 
-Set up **bakeworks** account on github
-* user: bakeworks
-* email: mail@bake.works
-* password: Bake-24-7
-
 However, requires fiddling around with SSL on Mac, etc to allow for both balmoral and bakeworks to access their different accounts.
 
 Some links which explain how to do this: 
@@ -18,8 +13,8 @@ Some links which explain how to do this:
 
 ```
 [user]
-        name = bakeworks
-        email = mail@bake.works
+        name = b___w___s
+        email = mail@b___.w___s
 [core]
         repositoryformatversion = 0
         filemode = true
