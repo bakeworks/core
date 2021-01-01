@@ -197,32 +197,17 @@ function newUnresolvedItem (customerId, productId, weekOrPeriod, standingQtys, s
   }
 }
 
-// standingOrder and specialOrders are optional
-// week should be 'standing' or 'YYYYMMDD'
-// standing and special may be undefined
-// weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newResolvedItem (customer, product, weekOrPeriod, standing, special) {
-  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
-  return {
-    customer,
-    product,
-    week,
-    standing: mapQtysToDays(mapQtysToArrays(standing)),
-    current: mapQtysToDays(mapQtysToArrays(special))
-  }
-}
-
 // item as returned by newUnresolvedItem
 // customers and products to resolve customerId and productId
 // returns item with customer and product resolved
 function resolveItem (item, customers, products) {
-  return newResolvedItem(
-    customers.find(e => e._id === item.customerId),
-    products.find(e => e._id === item.productId),
-    item.week,
-    item.standing,
-    item.current
-  )
+  return {
+    customer: customers.find(e => e._id === item.customerId),
+    pproduct: products.find(e => e._id === item.productId),
+    week: item.week,
+    standing: item.standing,
+    current: item.current
+  }
 }
 
 // standing and current are objects of form { sun: 0, mon: 1, ... }
@@ -280,7 +265,6 @@ module.exports = {
   uniqueItemsCount,
   specialItemsCount,
   newUnresolvedItem,
-  newResolvedItem,
   resolveItem,
 
   dayIndex,
