@@ -196,13 +196,13 @@ function newUnresolvedItem (customerId, productId, weekOrPeriod, standingOrder, 
 
 // standingOrder and specialOrders are optional
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newResolvedItem (customer, product, weekOrPeriod, standingOrder, specialOrder) {
-  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
+function newResolvedItem (customer, product, week, standing, special) {
   return {
     customer,
     product,
     week,
-    ...quantitiesFromCSVs(standingOrder, specialOrder)
+    standing,
+    special
   }
 }
 
