@@ -165,20 +165,20 @@ function mapQtysToDays (quantities) {
 }
 
 function quantitiesFromCSVs (standingOrder, specialOrder) {
-  const standingQuantities = standingOrder === undefined
+  const standing = standingOrder === undefined
     ? ZERO_QTYS
     : $csv.parseIntArray(standingOrder.quantities_csv)
-  const specialQuantities = specialOrder === undefined
+  const special = specialOrder === undefined
     ? NULL_QTYS
     : $csv.parseIntArray(specialOrder.quantities_csv)
-  const currentQuantities = standingQuantities.slice(0) // clone
+  const current = standing.slice(0) // clone
   for (let i = 0; i < 7; i++) {
-    const special = specialQuantities[i]
-    currentQuantities[i] = special < 0 ? standingQuantities[i] : special
+    const q = special[i]
+    current[i] = q < 0 ? standing[i] : q
   }
   return {
-    standing: mapQtysToDays(standingQuantities),
-    current: mapQtysToDays(currentQuantities)
+    standing: standing,
+    current: current
   }
 }
 
@@ -196,13 +196,13 @@ function newUnresolvedItem (customerId, productId, weekOrPeriod, standingOrder, 
 
 // standingOrder and specialOrders are optional
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newResolvedItem (customer, product, week, standing, special) {
+function newResolvedItem (customer, product, week, standing, current) {
   return {
     customer,
     product,
     week,
-    standing,
-    special
+    standing: mapQtysToDays(standing),
+    current: mapQtysToDays(current)
   }
 }
 
