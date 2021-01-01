@@ -197,7 +197,9 @@ function newUnresolvedItem (customerId, productId, weekOrPeriod, standingOrder, 
 // standingOrder and specialOrders are optional
 // week should be 'standing' or 'YYYYMMDD'
 // standing and current may be undefined
-function newResolvedItem (customer, product, week, standing, current) {
+// weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
+function newResolvedItem (customer, product, weekOrPeriod, standing, current) {
+  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
   return {
     customer,
     product,
