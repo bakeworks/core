@@ -185,15 +185,31 @@ function mapQtysToArrays (standingQtys, specialQtys) {
   }
 }
 
+function resolveToWeek(weekOrPeriod) {
+  return typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
+}
+
 // standingQtys and specialQtys are optional and will appropriately default.
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
 function newUnresolvedItem (customerId, productId, weekOrPeriod, standingQtys, specialQtys) {
-  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
+  const week = resolveToWeek(weekOrPeriod)
   return {
     customerId,
     productId,
     week,
     ...mapQtysToArrays(standingQtys, specialQtys)
+  }
+}
+
+// weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
+// standing and current quantities in item will be initialised to zero
+function newResolvedItem (customer, product, weekOrPeriod) {
+  const week = resolveToWeek(weekOrPeriod)
+  return {
+    customer,
+    product,
+    week,
+    ...mapQtysToArrays(ZERO_QTYS, NULL_QTYS)
   }
 }
 
@@ -264,7 +280,9 @@ module.exports = {
   itemsTotal,
   uniqueItemsCount,
   specialItemsCount,
+  resolveToWeek,
   newUnresolvedItem,
+  newResolvedItem,
   resolveItem,
 
   dayIndex,
