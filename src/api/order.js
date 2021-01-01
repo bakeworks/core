@@ -203,7 +203,7 @@ function newUnresolvedItem (customerId, productId, weekOrPeriod, standingQtys, s
 function resolveItem (item, customers, products) {
   return {
     customer: customers.find(e => e._id === item.customerId),
-    pproduct: products.find(e => e._id === item.productId),
+    product: products.find(e => e._id === item.productId),
     week: item.week,
     standing: item.standing,
     current: item.current
