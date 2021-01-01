@@ -209,7 +209,8 @@ function newResolvedItem (customer, product, weekOrPeriod) {
     customer,
     product,
     week,
-    ...mapQtysToArrays(ZERO_QTYS, NULL_QTYS)
+    standing: mapQtysToDays(ZERO_QTYS),
+    current: mapQtysToDays(ZERO_QTYS),
   }
 }
 
