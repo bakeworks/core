@@ -184,7 +184,7 @@ function quantitiesFromCSVs (standingOrder, specialOrder) {
 
 // standingOrder and specialOrders are optional
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newItem (customerId, productId, weekOrPeriod, standingOrder, specialOrder) {
+function newUnresolvedItem (customerId, productId, weekOrPeriod, standingOrder, specialOrder) {
   const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
   return {
     customerId,
@@ -194,17 +194,29 @@ function newItem (customerId, productId, weekOrPeriod, standingOrder, specialOrd
   }
 }
 
-// item as returned by newItem
+// standingOrder and specialOrders are optional
+// weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
+function newResolvedItem (customer, product, weekOrPeriod, standingOrder, specialOrder) {
+  const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
+  return {
+    customer,
+    product,
+    week,
+    ...quantitiesFromCSVs(standingOrder, specialOrder)
+  }
+}
+
+// item as returned by newUnresolvedItem
 // customers and products to resolve customerId and productId
 // returns item with customer and product resolved
-function resolvedItem (item, customers, products) {
-  return {
-    customer: customers.find(e => e._id === item.customerId),
-    product: products.find(e => e._id === item.productId),
-    week: item.week,
-    standing: item.standing,
-    current: item.current,
-  }
+function resolveItem (item, customers, products) {
+  return newResolvedItem(
+    customers.find(e => e._id === item.customerId),
+    products.find(e => e._id === item.productId),
+    item.week,
+    item.standing,
+    item.current
+  )
 }
 
 // standing and current are objects of form { sun: 0, mon: 1, ... }
@@ -261,8 +273,9 @@ module.exports = {
   itemsTotal,
   uniqueItemsCount,
   specialItemsCount,
-  newItem,
-  resolvedItem,
+  newUnresolvedItem,
+  newResolvedItem,
+  resolveItem,
 
   dayIndex,
   nearbyWeeksAsPeriods,
