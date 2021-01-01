@@ -1,5 +1,5 @@
-const $csv = require('../util/csv')
-const $date = require('../util/date')
+const csvUtil = require('../util/csv')
+const dateUtil = require('../util/date')
 
 const STANDING_WEEK = 'standing' // special weeks are YYYYMMDD
 
@@ -13,7 +13,7 @@ const SHOW_SPECIAL = 'Special orders'
 const SHOW_ZERO = 'Zero orders'
 const SHOW_OPTIONS = [SHOW_ALL, SHOW_NONZERO, SHOW_SPECIAL, SHOW_ZERO]
 const SHOW_OPTIONS_NO_SPECIAL = [SHOW_ALL, SHOW_NONZERO, SHOW_ZERO]
-const PERIOD_FORMAT = $date.DAY_MONTH_NAME_LONG
+const PERIOD_FORMAT = dateUtil.DAY_MONTH_NAME_LONG
 
 const ZERO_QTYS = [0, 0, 0, 0, 0, 0, 0]
 const NULL_QTYS = [-1, -1, -1, -1, -1, -1, -1]
@@ -103,16 +103,16 @@ function specialItemsCount (order) {
 }
 
 function nearbyWeeksAsPeriods (fmt = PERIOD_FORMAT, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
-  const dates = $date.nearbyWeeksDates(nWeeks)
-  const tags = $date.nearbyWeeksTags(nWeeks)
-  const labels = $date.nearbyWeeksLabels(fmt, nWeeks)
+  const dates = dateUtil.nearbyWeeksDates(nWeeks)
+  const tags = dateUtil.nearbyWeeksTags(nWeeks)
+  const labels = dateUtil.nearbyWeeksLabels(fmt, nWeeks)
   const result = []
   for (let i = 0; i < nWeeks; i++) {
     result.push({
       isStanding: false,
       index: i,
       start: dates[i],
-      finish: $date.addDays(dates[i], 6),
+      finish: dateUtil.addDays(dates[i], 6),
       tag: tags[i],
       label: labels[i]
     })
@@ -127,7 +127,7 @@ function periods (dateFormat = PERIOD_FORMAT) {
 }
 
 function periodAsWeek (period) {
-  return period.isStanding ? 'standing' : $date.format(period.start, $date.YYYYMMDD)
+  return period.isStanding ? 'standing' : dateUtil.format(period.start, dateUtil.YYYYMMDD)
 }
 
 function isMatchingItem (a, b) {
@@ -164,13 +164,16 @@ function mapQtysToDays (quantities) {
   return result
 }
 
-function quantitiesFromCSVs (standingOrder, specialOrder) {
-  const standing = standingOrder === undefined
-    ? ZERO_QTYS
-    : $csv.parseIntArray(standingOrder.quantities_csv)
-  const special = specialOrder === undefined
-    ? NULL_QTYS
-    : $csv.parseIntArray(specialOrder.quantities_csv)
+// Takes standing and special quantities and returns object
+// with standing and current quantities (resolving special/standing).
+// Given quantities may be CSV strings or 7-element arrays mapping
+// to each day of the week.
+function mapQtysToArrays (standingQtys, specialQtys) {
+  const resolve = (qtys, dflt) => {
+    return qtys === undefined ? dflt : ((typeof qtys === 'string') ? csvUtil.parseIntArray(qtys) : qtys)
+  }
+  const standing = resolve(standingQtys, ZERO_QTYS)
+  const special = resolve(specialQtys, NULL_QTYS)
   const current = standing.slice(0) // clone
   for (let i = 0; i < 7; i++) {
     const q = special[i]
@@ -182,30 +185,30 @@ function quantitiesFromCSVs (standingOrder, specialOrder) {
   }
 }
 
-// standingOrder and specialOrders are optional
+// standingQtys and specialQtys are optional and will appropriately default.
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newUnresolvedItem (customerId, productId, weekOrPeriod, standingOrder, specialOrder) {
+function newUnresolvedItem (customerId, productId, weekOrPeriod, standingQtys, specialQtys) {
   const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
   return {
     customerId,
     productId,
     week,
-    ...quantitiesFromCSVs(standingOrder, specialOrder)
+    ...mapQtysToArrays(standingQtys, specialQtys)
   }
 }
 
 // standingOrder and specialOrders are optional
 // week should be 'standing' or 'YYYYMMDD'
-// standing and current may be undefined
+// standing and special may be undefined
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newResolvedItem (customer, product, weekOrPeriod, standing, current) {
+function newResolvedItem (customer, product, weekOrPeriod, standing, special) {
   const week = typeof weekOrPeriod === 'string' ? weekOrPeriod : periodAsWeek(weekOrPeriod)
   return {
     customer,
     product,
     week,
-    standing: mapQtysToDays(standing || ZERO_QTYS),
-    current: mapQtysToDays(current || NULL_QTYS)
+    standing: mapQtysToDays(mapQtysToArrays(standing)),
+    current: mapQtysToDays(mapQtysToArrays(special))
   }
 }
 
