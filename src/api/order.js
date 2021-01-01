@@ -205,8 +205,8 @@ function resolveItem (item, customers, products) {
     customer: customers.find(e => e._id === item.customerId),
     product: products.find(e => e._id === item.productId),
     week: item.week,
-    standing: item.standing,
-    current: item.current
+    standing: mapQtysToDays(item.standing),
+    current: mapQtysToDays(item.current)
   }
 }
 
