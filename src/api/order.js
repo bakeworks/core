@@ -131,9 +131,7 @@ function periodAsWeek (period) {
 }
 
 function isMatchingItem (a, b) {
-  return a.product === undefined ||
-    b.product === undefined ||
-    (a.customer._id === b.customer._id && a.product._id === b.product._id)
+  return a.customer._id === b.customer._id && a.product._id === b.product._id
 }
 
 function findMatchingItem (item, items) {
@@ -143,13 +141,11 @@ function findMatchingItem (item, items) {
 function removeMatchingItem (item, items) {
   const i = items.findIndex(candidate => isMatchingItem(candidate, item))
   if (i !== -1) items.splice(i, 1)
+  return items
 }
 
 function matchingSpecial (standingOrder, specialOrders) {
-  return specialOrders.find(e =>
-    e.customer_id === standingOrder.customer_id &&
-    e.product_id === standingOrder.product_id
-  )
+  return specialOrders.find(candidate => isMatchingItem(standingOrder, candidate))
 }
 
 // Map array quantities to object with DAY_TAGS as keys.
