@@ -145,7 +145,8 @@ function removeMatchingItem (item, items) {
   console.log(`${fn} : i=${i} items.length=${items.length}`)
   if (i !== -1) {
     items.splice(i, 1)
-    console.log(`${fn} : i=${i} items.length=${items.length}`)
+    const j = items.findIndex(candidate => isMatchingItem(candidate, item))
+    console.log(`${fn} : i=${i} items.length=${items.length} j=${j}`)
   }
   return items
 }
