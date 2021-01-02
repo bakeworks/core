@@ -49,5 +49,6 @@ module.exports = {
   difference,
   intersection,
   union,
-  unique
+  unique,
+  deleteOne
 }
