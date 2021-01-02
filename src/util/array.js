@@ -41,6 +41,7 @@ function unique (array, cmpfn) {
 function deleteOne(array, matchFn) {
   const i = array.find(e => matchFn(e))
   if (i) array.splice(i, 1)
+  return array
 }
 
 module.exports = {
