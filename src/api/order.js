@@ -139,8 +139,14 @@ function findMatchingItem (item, items) {
 }
 
 function removeMatchingItem (item, items) {
+  const fn = `api.order.removeMatchingItem(customer._id=${item.customer._id}, product._id=${item.product._id})`
+  console.log(fn)
   const i = items.findIndex(candidate => isMatchingItem(candidate, item))
-  if (i !== -1) items.splice(i, 1)
+  console.log(`${fn} : i=${i} items.length=${items.length}`)
+  if (i !== -1) {
+    items.splice(i, 1)
+    console.log(`${fn} : i=${i} items.length=${items.length}`)
+  }
   return items
 }
 
