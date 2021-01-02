@@ -142,7 +142,7 @@ function findMatchingItem (item, items) {
 
 function removeMatchingItem (item, items) {
   const i = items.findIndex(candidate => isMatchingItem(candidate, item))
-  items.splice(i, 1)
+  if (i !== -1) items.splice(i, 1)
 }
 
 function matchingSpecial (standingOrder, specialOrders) {
