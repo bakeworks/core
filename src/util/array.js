@@ -38,6 +38,11 @@ function unique (array, cmpfn) {
   return result
 }
 
+function deleteOne(array, matchFn) {
+  const i = array.find(e => matchFn(e))
+  if (i) array.splice(i, 1)
+}
+
 module.exports = {
   sum,
   difference,
