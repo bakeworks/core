@@ -41,6 +41,12 @@ function isWeekStanding (week) {
   return week === STANDING_WEEK
 }
 
+// week should be 'standing' or 'YYYYMMDD'
+// returns ZERO_QTYS if standing, NULL_QTYS if special
+function initialQtys(week) {
+  return isWeekStanding(week) ? ZERO_QTYS : NULL_QTYS
+}
+
 function isItemStanding (item) {
   return isWeekStanding(item.week)
 }
@@ -50,7 +56,7 @@ function isItemStandingQuantity (item, day) {
 }
 
 function isItemSpecialQuantity (item, day) {
-  return !isItemStandingQuantity(item, day)
+  return !(isItemStanding(item) || isItemStandingQuantity(item, day))
 }
 
 function __itemTotal (qtys) {
@@ -231,8 +237,8 @@ function resolveItem (item, customers, products) {
 }
 
 // standing and current are objects of form { sun: 0, mon: 1, ... }
-// returns object of form{ standing: '1,2,3,4,5,6,7', special: '-1,-1,3,-1,-1,-1,0'}
-function quantitiesByDayToCSVs (standingByDay, currentByDay) {
+// returns object of form{ standing: [0,0,0,0,0,0,0], special: [0,0,0,0,0,0,0]}
+function quantitiesByDayToArrays (standingByDay, currentByDay) {
   const standing = []
   const special = []
   DAY_TAGS.forEach(day => {
@@ -242,16 +248,29 @@ function quantitiesByDayToCSVs (standingByDay, currentByDay) {
     special.push(specialQty < 0 || specialQty === standingQty ? -1 : specialQty)
   })
   return {
-    standing: standing.join(','),
-    special: special.join(',')
+    standing: standing,
+    special: special
   }
 }
 
-// returns object of form{ standing: '1,2,3,4,5,6,7', special: '-1,-1,3,-1,-1,-1,0'}
+// returns object of form{ standing: [0,0,0,0,0,0,0], special: [0,0,0,0,0,0,0]}
+function itemQuantitiesToArrays (item) {
+  return quantitiesByDayToArrays(item.standing, item.current)
+}
+
+// deprecated: legacy only
+function quantitiesByDayToCSVs (standingByDay, currentByDay) {
+  const a = quantitiesByDayToArrays(standingByDay, currentByDay)
+  return {
+    standing: join(a.standing, ','),
+    special: join(a.special, ',')
+  }
+}
+
+// deprecated: legacy only
 function itemQuantitiesToCSVs (item) {
   return quantitiesByDayToCSVs(item.standing, item.current)
 }
-
 
 module.exports = {
 
@@ -275,6 +294,7 @@ module.exports = {
 
   itemDebugString,
   isWeekStanding,
+  initialQtys,
   isItemStanding,
   isItemStandingQuantity,
   isItemSpecialQuantity,
@@ -299,6 +319,8 @@ module.exports = {
   matchingSpecial,
 
   mapQtysToDays,
+  quantitiesByDayToArrays,
+  itemQuantitiesToArrays,
   quantitiesByDayToCSVs,
   itemQuantitiesToCSVs
 }
