@@ -9,7 +9,7 @@ function resolveEnum (code, enumsMap, description) {
 }
 
 module.exports = {
-  product: require('./product'),
+  product: require('./production'),
   recipe: require('./recipe'),
   user: require('./user'),
   bool: require('./bool'),
