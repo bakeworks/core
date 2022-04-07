@@ -1,5 +1,5 @@
 const $string = require('../util/string.js')
-const { origins, stages, status} = require('../enums/product')
+const { origins, stages, status} = require('../enums/production')
 
 function populate(product) {
   product.status = status.map[product.status_code]
