@@ -5,7 +5,10 @@ const STANDING_WEEK = 'standing' // special weeks are YYYYMMDD
 
 const STANDING_LABEL = 'Standing'
 const SPECIAL_LABEL = 'Special'
-const GROUPINGS = ['Customer', 'Product']
+
+const CUSTOMER_GROUPING = 'Customer'
+const PRODUCT_GROUPING = 'Product'
+const GROUPINGS = [CUSTOMER_GROUPING, PRODUCT_GROUPING]
 
 const SHOW_ALL = 'All orders'
 const SHOW_NONZERO = 'Non-zero orders'
