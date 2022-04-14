@@ -1,6 +1,7 @@
 const csvUtil = require('../util/csv')
 const dateUtil = require('../util/date')
 
+const COMMA = ','
 const STANDING_WEEK = 'standing' // special weeks are YYYYMMDD
 
 const STANDING_LABEL = 'Standing'
@@ -265,8 +266,8 @@ function itemQuantitiesToArrays (item) {
 function quantitiesByDayToCSVs (standingByDay, currentByDay) {
   const a = quantitiesByDayToArrays(standingByDay, currentByDay)
   return {
-    standing: join(a.standing, ','),
-    special: join(a.special, ',')
+    standing: a.standing.join(COMMA),
+    special: a.special.join(COMMA)
   }
 }
 
