@@ -4,7 +4,7 @@
 
 // toObjs maybe array or Map.
 // If map it should be keyed by expected values of fromObj[fromProp] and toProp will be ignore
-function resolveJoin (fromName, fromObj, fromProp, toName, toObjs, toProp = '_id') {
+function resolveJoin(fromName, fromObj, fromProp, toName, toObjs, toProp = '_id') {
   const fromVal = fromObj[fromProp]
   const result = toObjs instanceof Map
     ? toObjs.get(fromVal)
@@ -15,12 +15,12 @@ function resolveJoin (fromName, fromObj, fromProp, toName, toObjs, toProp = '_id
   return result
 }
 
-// return a Map of given objects keyed by their _ids
-function objectsById (objects) {
+// return an object of given objects keyed by their _ids
+function objectsById(objects) {
   // console.log(`api.db.objectsById() : 1 : objects.length=${objects.length}`)
-  const map = new Map()
+  const map = {} // new Map()
   // console.log('api.db.objectsById() : 2')
-  objects.forEach(obj => map.set(obj._id, obj))
+  objects.forEach(obj => map[obj._id] = obj) // map.set(obj._id, obj))
   // console.log(`api.db.objectsById() : 3 : returning map.size ${map.size} `)
   return map
 }
