@@ -100,16 +100,16 @@ function itemTotal (item, source = 'current') {
   return __itemTotal(item[source])
 }
 
-function itemsTotal (order) {
-  return order.items.reduce((sum, item) => sum + itemTotal(item), 0)
+function itemsTotal (items) {
+  return items.reduce((sum, item) => sum + itemTotal(item), 0)
 }
 
-function uniqueItemsCount (order) {
-  return order.items.reduce((count, item) => count + (itemTotal(item) === 0 ? 0 : 1), 0)
+function uniqueItemsCount (items) {
+  return items.reduce((count, item) => count + (itemTotal(item) === 0 ? 0 : 1), 0)
 }
 
-function specialItemsCount (order) {
-  return order.items.reduce((count, item) => count + __itemSpecialDayCount(item), 0)
+function specialItemsCount (items) {
+  return items.reduce((count, item) => count + __itemSpecialDayCount(item), 0)
 }
 
 function nearbyWeeksAsPeriods (fmt = PERIOD_FORMAT, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
