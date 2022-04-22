@@ -13,26 +13,25 @@ Production batch sizing:
     * min and max are multiples of step
 */
 
-const codes = {
-  none: 'none',
-  fixed: 'fixed',
-  variable: 'variable',
-  stepped: 'stepped',
-}
-
 const enums = {
   // fix means min === max
   none: {
-    code: codes.none, label: 'None', fix: false, min: false, max: false, step: false, partial: false },
+    code: 'none', label: 'None',
+    fix: false, min: false, max: false, step: false, partial: false
+  },
   fixed: {
-    code: codes.fixed, label: 'Fixed', fix: true, min: true, max: true, step: false, partial: true },
+    code: 'fixed', label: 'Fixed',
+    fix: true, min: true, max: true, step: false, partial: true
+  },
   variable: {
-    code: codes.variable, label: 'Variable', fix: false, min: true, max: true, step: false, partial: false },
+    code: 'variable', label: 'Variable',
+    fix: false, min: true, max: true, step: false, partial: false
+  },
   stepped: {
-    code: codes.stepped, label: 'Stepped', fix: false, min: true, max: true, step: true, partial: false },
+    code: 'stepped', label: 'Stepped',
+    fix: false, min: true, max: true, step: true, partial: false
+  },
 }
-
-const all = Object.values(enums)
 
 // Returns an string with error messages separated by "\n" if params don't suit type (type).
 // Returns null if no error.
@@ -58,19 +57,12 @@ function validate(code, min, max, step, partial = false) {
       if (!number.isMultiple(step, max))
         errors.push(`${e.label} batch maximum must be a multiple of the batch step size.`)
     }
-  } 
+  }
   if (code !== codes.fixed && partial)
     errors.push(`Only ${enums.fixed.label} batches may be partial.`)
   if (errors.length === 0)
     return null
-  return errors.length === 1 ? errors[0] : errors.join('\n')     
-}
-
-const is = {
-  none: code => code === codes.none,
-  fixed: code => code === codes.fixed,
-  variable: code => code === codes.variable,
-  stepped: code => code === codes.stepped,
+  return errors.length === 1 ? errors[0] : errors.join('\n')
 }
 
 /* DEPRECATED
@@ -78,7 +70,7 @@ function normalise(type, min, max, step, partial) {
   const error = validate(type, min, max, step, partial)
   if (error) throw new Error(error)
   switch(type) {
-    case NONE_CODE: 
+    case NONE_CODE:
       return none()
     case FIXED_CODE:
       return fixed(min, partial)
@@ -93,9 +85,6 @@ function normalise(type, min, max, step, partial) {
 */
 
 module.exports = {
-  codes,
   enums,
-  all,
-  is,
   validate
 }
