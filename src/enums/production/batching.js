@@ -85,6 +85,6 @@ function normalise(type, min, max, step, partial) {
 */
 
 module.exports = {
-  enums,
+  ...enums,
   validate
 }
