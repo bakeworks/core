@@ -1,7 +1,7 @@
-const string = require('../../util/string')
-const origins = require('./origins')
-const status = require('./status')
-const batching = require('./batching')
+const string = require('../../../util/string')
+const origins = require('../deprecated/origins')
+const status = require('../status')
+const batching = require('../batching')
 
 // REF: http://bakingstories.blogspot.com/p/12-steps.html
 // REF: https://bread-magazine.com/bread-making-steps/
@@ -23,11 +23,11 @@ codes = {
 }
 
 /* PRODUCTION STAGES
- 
+
 Doughs may be fermented or non-fermented.
 
 FERMENTED DOUGH-BASED PRODUCTION STAGES
-  - prep 
+  - prep
   - mix
   - bulk/primary ferment
   - long ferment [croissants, ...]
@@ -61,7 +61,7 @@ function instantiate(code, sequence) {
     case codes.shape:
       batchTypes = [batching.FIXED]
       defaultBatchSizing = batching.fixed
-    case codes.prep:  
+    case codes.prep:
       batchTypes = []
       defaultBatchSizing = batching.none
   }
@@ -136,7 +136,7 @@ function getOutputStages(code) {
     case codes.mix:
       return [enums.ferment, enums.layer, enums.shape, enums.bake]
     case codes.ferment:
-      return [enums.mix, enums.layer, enums.shape, enums.bake] 
+      return [enums.mix, enums.layer, enums.shape, enums.bake]
     case codes.layer:
       return [enums.mix, enums.ferment, enums.shape, enums.bake]
     case codes.shape:
