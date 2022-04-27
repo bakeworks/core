@@ -30,25 +30,11 @@ function cmp (_a, _b, ignorecase = true) {
   return a < b ? -1 : (a > b ? 1 : 0)
 }
 
-function eq (a, b, ignorecase = true) {
-  return cmp(a, b, ignorecase) === 0
-}
-
-function lt (a, b, ignorecase = true) {
-  return cmp(a, b, ignorecase) === -1
-}
-
-function lte (a, b, ignorecase = true) {
-  return cmp(a, b, ignorecase) <= 0
-}
-
-function gt (a, b, ignorecase = true) {
-  return cmp(a, b, ignorecase) === 1
-}
-
-function gte (a, b, ignorecase = true) {
-  return cmp(a, b, ignorecase) >= 1
-}
+const eq = (a, b, ignorecase = true) => cmp(a, b, ignorecase) === 0
+const lt = (a, b, ignorecase = true) => cmp(a, b, ignorecase) === -1
+const le = (a, b, ignorecase = true) => cmp(a, b, ignorecase) <= 0
+const gt = (a, b, ignorecase = true) => cmp(a, b, ignorecase) === 1
+const ge = (a, b, ignorecase = true) => cmp(a, b, ignorecase) >= 0
 
 module.exports = {
   capitalise,
@@ -58,7 +44,7 @@ module.exports = {
   cmp,
   eq,
   lt,
-  lte,
+  le,
   gt,
-  gte
+  ge
 }
