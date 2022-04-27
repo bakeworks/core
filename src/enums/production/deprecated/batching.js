@@ -1,4 +1,4 @@
-const number = require('../../util/number')
+const number = require('../../../util/number')
 
 /*
 Production batch sizing:

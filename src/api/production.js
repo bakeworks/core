@@ -1,17 +1,21 @@
-const $string = require('../util/string.js')
-const { origins, stages, status} = require('../enums/production')
-
-function populate(product) {
-  product.status = status.map[product.status_code]
-  product.stage = stages.map[product.action_code]
-  product.origin = origins.map[product.origin_code]
+const BATCH_MODES = {
+  none: { code: 'none', label: 'None', min: false, max: false, step: false, fixed: false, partial: false, },
+  fixed: { code: 'fixed', label: 'Fixed', min: false, max: false, step: false, fixed: true, partial: true, },
+  variable: { code: 'variable', label: 'Variable', min: true, max: true, step: false, fixed: false, partial: false, },
+  stepped: { code: 'stepped', label: 'Stepped', min: false, max: false, step: true, fixed: false, partial: false, },
 }
 
-function sortProducts (products, prop = 'name') {
-  return products.sort((a, b) => $string.cmp(a[prop], b[prop]))
+const ALL_BATCH_MODES = Object.values(BATCH_MODES)
+
+const STAGES = {
+  mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES },
+  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
+  layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
+  shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
 }
 
 module.exports = {
-  populate,
-  sortProducts
+  BATCH_MODES,
+  ALL_BATCH_MODES,
+  STAGES
 }

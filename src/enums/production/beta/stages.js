@@ -1,7 +1,7 @@
 const string = require('../../../util/string')
 const origins = require('../deprecated/origins')
-const status = require('../status')
-const batching = require('../batching')
+const status = require('../deprecated/status')
+const batching = require('../deprecated/batching')
 
 // REF: http://bakingstories.blogspot.com/p/12-steps.html
 // REF: https://bread-magazine.com/bread-making-steps/
