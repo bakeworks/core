@@ -1,8 +1,8 @@
 const BATCH_MODES = {
   none: { code: 'none', label: 'None', min: false, max: false, step: false, fixed: false, partial: false, },
-  fixed: { code: 'fixed', label: 'Fixed', min: false, max: false, step: false, fixed: true, partial: true, },
+  fixed: { code: 'fixed', label: 'Fixed', in: false, max: false, step: false, fixed: true, partial: true, },
   variable: { code: 'variable', label: 'Variable', min: true, max: true, step: false, fixed: false, partial: false, },
-  stepped: { code: 'stepped', label: 'Stepped', min: false, max: false, step: true, fixed: false, partial: false, },
+  stepped: { code: 'stepped', label: 'Stepped', min: true, max: true, step: true, fixed: false, partial: false, },
 }
 
 const ALL_BATCH_MODES = Object.values(BATCH_MODES)
