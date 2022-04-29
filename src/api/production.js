@@ -26,10 +26,13 @@ const DAYS = {
 
 const DAY_KEYS = Object.keys(DAYS)
 
+const PRIORITIES = [1,2,3,4,5,6,7,8,9]
+
 module.exports = {
   BATCH_MODES,
   ALL_BATCH_MODES,
   STAGES,
   DAYS,
-  DAY_KEYS
+  DAY_KEYS,
+  PRIORITIES
 }
