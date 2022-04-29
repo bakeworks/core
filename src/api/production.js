@@ -14,6 +14,18 @@ const STAGES = {
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
 }
 
+const DAYS = {
+  sun: { dow: 0, label: 'Sun' },
+  mon: { dow: 1, label: 'Mon' },
+  tue: { dow: 2, label: 'Tue' },
+  wed: { dow: 3, label: 'Wed' },
+  thu: { dow: 4, label: 'Thu' },
+  fri: { dow: 5, label: 'Fri' },
+  sat: { dow: 6, label: 'Sat' },
+}
+
+const DAY_TAGS = Object.keys(DAYS)
+
 module.exports = {
   BATCH_MODES,
   ALL_BATCH_MODES,
