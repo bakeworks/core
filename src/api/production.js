@@ -24,10 +24,12 @@ const DAYS = {
   sat: { dow: 6, label: 'Sat' },
 }
 
-const DAY_TAGS = Object.keys(DAYS)
+const DAY_KEYS = Object.keys(DAYS)
 
 module.exports = {
   BATCH_MODES,
   ALL_BATCH_MODES,
-  STAGES
+  STAGES,
+  DAYS,
+  DAY_KEYS
 }
