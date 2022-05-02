@@ -26,7 +26,27 @@ const DAYS = {
 
 const DAY_KEYS = Object.keys(DAYS)
 
+const DOWS = {} // keyed by integer dows
+Object.keys(DAYS).forEach(key => DOWS[DAYS[key].dow] = DAYS[key])
+
 const PRIORITIES = [1,2,3,4,5,6,7,8,9]
+
+const PRIORITY_LABELS = {
+  "1": 'Highest',
+  "2": 'Very High',
+  "3": 'High',
+  "4": 'Medium High',
+  "5": 'Medium',
+  "6": 'Medium Low',
+  "7": 'Low',
+  "8": 'Very Low',
+  "9": 'Lowest',
+}
+
+FORMULA_MEASURES = {
+  bakers: { code: 'bakers', label: 'Bakers' },
+  percent: { code: 'percent', label: 'Percent' },
+}
 
 module.exports = {
   BATCH_MODES,
@@ -34,5 +54,8 @@ module.exports = {
   STAGES,
   DAYS,
   DAY_KEYS,
-  PRIORITIES
+  DOWS,
+  PRIORITIES,
+  PRIORITY_LABELS,
+  FORMULA_MEASURES
 }
