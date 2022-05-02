@@ -43,7 +43,7 @@ const PRIORITY_LABELS = {
   "9": 'Lowest',
 }
 
-FORMULA_MEASURES = {
+const FORMULA_MEASURES = {
   bakers: { code: 'bakers', label: 'Bakers' },
   percent: { code: 'percent', label: 'Percent' },
 }
