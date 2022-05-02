@@ -43,9 +43,9 @@ const PRIORITY_LABELS = {
   "9": 'Lowest',
 }
 
-const FORMULA_MEASURES = {
+const PERCENT_MEASURES = {
   bakers: { code: 'bakers', label: 'Bakers' },
-  percent: { code: 'percent', label: 'Percent' },
+  actual: { code: 'actual', label: 'Actual' },
 }
 
 module.exports = {
@@ -57,5 +57,5 @@ module.exports = {
   DOWS,
   PRIORITIES,
   PRIORITY_LABELS,
-  FORMULA_MEASURES
+  PERCENT_MEASURES
 }
