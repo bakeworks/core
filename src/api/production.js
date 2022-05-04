@@ -14,6 +14,11 @@ const STAGES = {
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
 }
 
+const MIX_TYPES = {
+  dough: { code: 'dough', label: 'Dough' },
+  batter: { code: 'batter', label: 'Batter' },
+}
+
 const DAYS = {
   sun: { dow: 0, label: 'Sun' },
   mon: { dow: 1, label: 'Mon' },
@@ -48,7 +53,29 @@ const PERCENT_MEASURES = {
   actual: { code: 'actual', label: 'Actual' },
 }
 
+function validateMeasureValues(measure, values) {
+  if (values.length === 0) {
+    return { ok: false, message: 'at least one value required'}
+  }
+  const code = typeof measure === 'object' ? measure.code : measure
+  if (values.length === 0) {
+    return { ok: false, message: 'at least one value required'}
+  }
+  if (code === PERCENT_MEASURES.bakers.code) {
+    const message = `${code} measure requires one value to be 100%`
+    const ok = values.find(v => v === 100)
+    return { ok, message }
+  }
+  if (code === PERCENT_MEASURES.actual.code) {
+    const message = `${code} measure requires values to total 100%`
+    const total = values.reduce((memo, val) => memo + val, 0)
+    return { ok: total === 100, message }
+  }
+  return { ok: false, message: `invalid measure code '${code}'` }
+}
+
 module.exports = {
+  MIX_TYPES,
   BATCH_MODES,
   ALL_BATCH_MODES,
   STAGES,
@@ -57,5 +84,6 @@ module.exports = {
   DOWS,
   PRIORITIES,
   PRIORITY_LABELS,
-  PERCENT_MEASURES
+  PERCENT_MEASURES,
+  validateMeasures
 }
