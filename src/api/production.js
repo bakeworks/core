@@ -55,19 +55,16 @@ const PERCENT_MEASURES = {
 
 function validateMeasureValues(measure, values) {
   if (values.length === 0) {
-    return { ok: false, message: 'at least one value required'}
+    return { ok: false, message: 'at least one measure value of 100% required'}
   }
   const code = typeof measure === 'object' ? measure.code : measure
-  if (values.length === 0) {
-    return { ok: false, message: 'at least one value required'}
-  }
   if (code === PERCENT_MEASURES.bakers.code) {
-    const message = `${code} measure requires one value to be 100%`
+    const message = `${code} measure requires one or more values equal to 100%`
     const ok = values.find(v => v === 100)
     return { ok, message }
   }
   if (code === PERCENT_MEASURES.actual.code) {
-    const message = `${code} measure requires values to total 100%`
+    const message = `${code} measure requires total values to equal 100%`
     const total = values.reduce((memo, val) => memo + val, 0)
     return { ok: total === 100, message }
   }
