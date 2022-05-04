@@ -53,7 +53,7 @@ const PERCENT_MEASURES = {
   actual: { code: 'actual', label: 'Actual' },
 }
 
-function validateMeasureValues(measure, values) {
+function validateMeasures(measure, values) {
   if (values.length === 0) {
     return { ok: false, message: 'at least one measure value of 100% required'}
   }
