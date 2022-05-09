@@ -12,6 +12,8 @@ const STAGES = {
   ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
   layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
+  prrof: { code: 'proof', label: 'Proof', batchModes: [] },
+  bake: { code: 'bake', label: 'Bake', batchModes: [] },
 }
 
 const MIX_TYPES = {
