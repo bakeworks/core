@@ -29,6 +29,10 @@ const MIX_TYPES = {
   },
 }
 
+function mixTypeHasOptionalStage(mixType, stageCode) {
+  return mixType.optionalStages.find(stage => stage.code === stageCode)
+}
+
 const DAYS = {
   sun: { dow: 0, label: 'Sun' },
   mon: { dow: 1, label: 'Mon' },
@@ -92,5 +96,6 @@ module.exports = {
   PRIORITIES,
   PRIORITY_LABELS,
   PERCENT_MEASURES,
-  validateMeasures
+  validateMeasures,
+  mixTypeHasOptionalStage
 }
