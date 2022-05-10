@@ -12,13 +12,21 @@ const STAGES = {
   ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
   layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
-  prrof: { code: 'proof', label: 'Proof', batchModes: [] },
+  proof: { code: 'proof', label: 'Proof', batchModes: [] },
   bake: { code: 'bake', label: 'Bake', batchModes: [] },
 }
 
 const MIX_TYPES = {
-  dough: { code: 'dough', label: 'Dough' },
-  batter: { code: 'batter', label: 'Batter' },
+  dough: {
+    code: 'dough',
+    label: 'Dough',
+    optionalStages: [STAGES.ferment, STAGES.layer, STAGES.proof]
+  },
+  batter: {
+    code: 'batter',
+    label: 'Batter',
+    optionalStages: []
+  },
 }
 
 const DAYS = {
