@@ -9,7 +9,7 @@ const ALL_BATCH_MODES = Object.values(BATCH_MODES)
 
 const STAGES = {
   mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES },
-  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
+  // ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
   layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
   proof: { code: 'proof', label: 'Proof', batchModes: [] },
@@ -20,7 +20,7 @@ const MIX_TYPES = {
   dough: {
     code: 'dough',
     label: 'Dough',
-    optionalStages: [STAGES.ferment, STAGES.layer, STAGES.proof]
+    optionalStages: [STAGES.layer, STAGES.proof]
   },
   batter: {
     code: 'batter',
