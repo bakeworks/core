@@ -13,7 +13,9 @@ const STAGES = {
   layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
   proof: { code: 'proof', label: 'Proof', batchModes: [] },
+  fill: { code: 'fill', label: 'Fill', batchModes: [] },
   bake: { code: 'bake', label: 'Bake', batchModes: [] },
+  top: { code: 'top', label: 'Top', batchModes: [] },
 }
 
 const MIX_TYPES = {
@@ -21,6 +23,11 @@ const MIX_TYPES = {
     code: 'dough',
     label: 'Dough',
     optionalStages: [STAGES.layer, STAGES.proof]
+  },
+  starter: {
+    code: 'starter',
+    label: 'Starter',
+    optionalStages: []
   },
   batter: {
     code: 'batter',
