@@ -10,7 +10,7 @@ const ALL_BATCH_MODES = Object.values(BATCH_MODES)
 const STAGES = {
   base: { code: 'base', label: 'Base', batchModes: [] },
   mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES },
-  // ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
+  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
   layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
   fill: { code: 'fill', label: 'Fill', batchModes: [] },
