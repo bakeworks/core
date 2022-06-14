@@ -7,27 +7,17 @@ const BATCH_MODES = {
 
 const ALL_BATCH_MODES = Object.values(BATCH_MODES)
 
-const STAGES = {
-  base: { code: 'base', label: 'Base', batchModes: [] },
-  mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES },
-  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
-  layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
-  shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
-  fill: { code: 'fill', label: 'Fill', batchModes: [] },
-  bake: { code: 'bake', label: 'Bake', batchModes: [] },
-  top: { code: 'top', label: 'Top', batchModes: [] },
-  slice: { code: 'slice', label: 'Slice', batchModes: [] },
-  package: { code: 'package', label: 'Package', batchModes: [] },
-}
-
-const STAGE_INPUTS = {
-  base: [],
-  mix: ['base', 'mix'],
-  layer: ['base', 'mix'],
-  shape: ['layer', 'mix'],
-  fill: ['shape', 'mix', 'base'],
-  bake: ['shape'],
-  top: ['bake', 'mix', 'base'],
+const RECIPE_TYPES = {
+  ingredient: { code: 'ingredient', label: 'Ingredient', batchModes: [], inputs: [] },
+  mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES, inputs: ['base', 'mix'] },
+  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES, inputs: ['mix'] },
+  layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES, inputs: ['base', 'mix'] },
+  shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed], inputs: ['layer', 'mix'] },
+  fill: { code: 'fill', label: 'Fill', batchModes: [], inputs: ['shape', 'mix', 'base'] },
+  bake: { code: 'bake', label: 'Bake', batchModes: [], inputs: ['shape'] },
+  top: { code: 'top', label: 'Top', batchModes: [], inputs: ['bake', 'mix', 'base'] },
+  slice: { code: 'slice', label: 'Slice', batchModes: [], inputs: ['bake']  },
+  package: { code: 'package', label: 'Package', batchModes: [], inputs: ['bake', 'slice'] },
 }
 
 const MIX_TYPES = {
@@ -108,8 +98,7 @@ module.exports = {
   MIX_TYPES,
   BATCH_MODES,
   ALL_BATCH_MODES,
-  STAGES,
-  STAGE_INPUTS,
+  RECIPE_TYPES,
   DAYS,
   DAY_KEYS,
   DOWS,
