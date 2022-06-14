@@ -8,14 +8,26 @@ const BATCH_MODES = {
 const ALL_BATCH_MODES = Object.values(BATCH_MODES)
 
 const STAGES = {
+  base: { code: 'base', label: 'Base', batchModes: [] },
   mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES },
   // ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES },
   layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES },
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed] },
-  proof: { code: 'proof', label: 'Proof', batchModes: [] },
   fill: { code: 'fill', label: 'Fill', batchModes: [] },
   bake: { code: 'bake', label: 'Bake', batchModes: [] },
   top: { code: 'top', label: 'Top', batchModes: [] },
+  slice: { code: 'slice', label: 'Slice', batchModes: [] },
+  package: { code: 'package', label: 'Package', batchModes: [] },
+}
+
+const STAGE_INPUTS = {
+  base: [],
+  mix: ['base', 'mix'],
+  layer: ['base', 'mix'],
+  shape: ['layer', 'mix'],
+  fill: ['shape', 'mix', 'base'],
+  bake: ['shape'],
+  top: ['bake', 'mix', 'base'],
 }
 
 const MIX_TYPES = {
@@ -76,20 +88,20 @@ const PERCENT_MEASURES = {
 
 function validateMeasures(measure, values) {
   if (values.length === 0) {
-    return { ok: false, message: 'at least one measure value of 100% required'}
+    return { ok: false, message: 'At least one measure value of 100% required.'}
   }
   const code = typeof measure === 'object' ? measure.code : measure
   if (code === PERCENT_MEASURES.bakers.code) {
-    const message = `${code} measure requires one or more values equal to 100%`
+    const message = `${PERCENT_MEASURES[code].label} measure requires one or more values equal to 100%.`
     const ok = values.find(v => v === 100)
     return { ok, message }
   }
   if (code === PERCENT_MEASURES.actual.code) {
-    const message = `${code} measure requires total values to equal 100%`
+    const message = `${PERCENT_MEASURES[code].label} measure requires values to total 100%.`
     const total = values.reduce((memo, val) => memo + val, 0)
     return { ok: total === 100, message }
   }
-  return { ok: false, message: `invalid measure code '${code}'` }
+  return { ok: false, message: `Invalid measure code '${code}'` }
 }
 
 module.exports = {
@@ -97,6 +109,7 @@ module.exports = {
   BATCH_MODES,
   ALL_BATCH_MODES,
   STAGES,
+  STAGE_INPUTS,
   DAYS,
   DAY_KEYS,
   DOWS,
