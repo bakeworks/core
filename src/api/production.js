@@ -8,16 +8,16 @@ const BATCH_MODES = {
 const ALL_BATCH_MODES = Object.values(BATCH_MODES)
 
 const RECIPE_TYPES = {
-  ingredient: { code: 'ingredient', label: 'Ingredient', batchModes: [], inputs: [] },
-  mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES, inputs: ['base', 'mix'] },
-  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES, inputs: ['mix'] },
-  layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES, inputs: ['base', 'mix'] },
-  shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed], inputs: ['layer', 'mix'] },
-  fill: { code: 'fill', label: 'Fill', batchModes: [], inputs: ['shape', 'mix', 'base'] },
-  bake: { code: 'bake', label: 'Bake', batchModes: [], inputs: ['shape'] },
-  top: { code: 'top', label: 'Top', batchModes: [], inputs: ['bake', 'mix', 'base'] },
-  slice: { code: 'slice', label: 'Slice', batchModes: [], inputs: ['bake']  },
-  package: { code: 'package', label: 'Package', batchModes: [], inputs: ['bake', 'slice'] },
+  ingredient: { code: 'ingredient', label: 'Ingredient', batchModes: [], inputTypes: [] },
+  mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES, inputTypes: ['base', 'mix'] },
+  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES, inputTypes: ['mix'] },
+  layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES, inputTypes: ['base', 'mix'] },
+  shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed], inputTypes: ['layer', 'mix'] },
+  fill: { code: 'fill', label: 'Fill', batchModes: [], inputTypes: ['shape', 'mix', 'base'] },
+  bake: { code: 'bake', label: 'Bake', batchModes: [], inputTypes: ['shape'] },
+  top: { code: 'top', label: 'Top', batchModes: [], inputTypes: ['bake', 'mix', 'base'] },
+  slice: { code: 'slice', label: 'Slice', batchModes: [], inputTypes: ['bake']  },
+  package: { code: 'package', label: 'Package', batchModes: [], inputTypes: ['bake', 'slice'] },
 }
 
 const MIX_TYPES = {
