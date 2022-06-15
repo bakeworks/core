@@ -24,17 +24,14 @@ const MIX_TYPES = {
   dough: {
     code: 'dough',
     label: 'Dough',
-    optionalStages: [STAGES.layer, STAGES.proof]
   },
   starter: {
     code: 'starter',
     label: 'Starter',
-    optionalStages: []
   },
   batter: {
     code: 'batter',
     label: 'Batter',
-    optionalStages: []
   },
 }
 
