@@ -13,7 +13,7 @@ const RECIPE_TYPES = {
   ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES, inputTypes: ['mix'] },
   layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES, inputTypes: ['ingredient', 'mix'] },
   shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed], inputTypes: ['layer', 'mix'] },
-  fill: { code: 'fill', label: 'Fill', batchModes: [], inputTypes: ['shape', 'mix', 'ingredient'] },
+  fill: { code: 'fill', label: 'Fill', batchModes: [ALL_BATCH_MODES], inputTypes: ['shape', 'mix', 'ingredient'] },
   bake: { code: 'bake', label: 'Bake', batchModes: [], inputTypes: ['shape'] },
   top: { code: 'top', label: 'Top', batchModes: [], inputTypes: ['bake', 'mix', 'ingredient'] },
   slice: { code: 'slice', label: 'Slice', batchModes: [], inputTypes: ['bake']  },
