@@ -30,60 +30,70 @@ const RECIPE_TYPES = {
     code: 'ingredient', label: 'Ingredient',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: [],
-    inputTypes: []
+    inputCount: { min: 0, max: 0 },
+    inputTypes: [],
   },
   mix: {
     code: 'mix', label: 'Mix',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
-    inputTypes: ['ingredient', 'mix']
+    inputCount: { min: 2, max: 99 },
+    inputTypes: ['ingredient', 'mix'],
     },
   ferment: {
     code: 'ferment', label: 'Ferment',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
+    inputCount: { min: 1, max: 1 },
     inputTypes: ['mix']
     },
   layer: {
     code: 'layer', label: 'Layer',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
+    inputCount: { min: 1, max: 99  },
     inputTypes: ['ingredient', 'mix']
     },
   shape: {
     code: 'shape', label: 'Shape',
     batchMeasure: BATCH_MEASURES.na.code,
     batchModes: [BATCH_MODES.fixed],
+    inputCount: { min: 1, max: 99  },
     inputTypes: ['layer', 'mix']
     },
   fill: {
     code: 'fill', label: 'Fill',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: ALL_BATCH_MODES,
+    inputCount: { min: 1, max: 99  },
     inputTypes: ['shape', 'mix', 'ingredient']
     },
   bake: {
     code: 'bake', label: 'Bake',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
+    inputCount: { min: 1, max: 1 },
     inputTypes: ['shape']
     },
   top: {
     code: 'top', label: 'Top',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
+    inputCount: { min: 2, max: 99 },
     inputTypes: ['bake', 'mix', 'ingredient']
     },
   slice: {
     code: 'slice', label: 'Slice',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
+    inputCount: { min: 1, max: 1 },
     inputTypes: ['bake']
     },
   package: {
     code: 'package', label: 'Package',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
+    inputCount: { min: 1, max: 1 },
     inputTypes: ['bake', 'slice']
   },
 }
