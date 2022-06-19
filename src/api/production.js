@@ -1,23 +1,91 @@
 const BATCH_MODES = {
-  none: { code: 'none', label: 'None', min: false, max: false, step: false, fixed: false, partial: false, },
-  fixed: { code: 'fixed', label: 'Fixed', min: false, max: false, step: false, fixed: true, partial: true, },
-  variable: { code: 'variable', label: 'Variable', min: true, max: true, step: false, fixed: false, partial: false, },
-  stepped: { code: 'stepped', label: 'Stepped', min: true, max: true, step: true, fixed: false, partial: false, },
+  none: {
+    code: 'none', label: 'None',
+    min: false, max: false, step: false, fixed: false, partial: false,
+  },
+  fixed: {
+    code: 'fixed', label: 'Fixed',
+    min: false, max: false, step: false, fixed: true, partial: true,
+  },
+  variable: {
+    code: 'variable', label: 'Variable',
+    min: true, max: true, step: false, fixed: false, partial: false,
+  },
+  stepped: {
+    code: 'stepped', label: 'Stepped',
+    min: true, max: true, step: true, fixed: false, partial: false,
+  },
 }
 
 const ALL_BATCH_MODES = Object.values(BATCH_MODES)
 
+const BATCH_MEASURES = {
+  na: { code: 'n/a', label: 'N/A' },
+  kgs: { code: 'kgs', label: 'Kgs' },
+  units: { code: 'units', label: 'Units' },
+}
+
 const RECIPE_TYPES = {
-  ingredient: { code: 'ingredient', label: 'Ingredient', batchModes: [], inputTypes: [] },
-  mix: { code: 'mix', label: 'Mix', batchModes: ALL_BATCH_MODES, inputTypes: ['ingredient', 'mix'] },
-  ferment: { code: 'ferment', label: 'Ferment', batchModes: ALL_BATCH_MODES, inputTypes: ['mix'] },
-  layer: { code: 'layer', label: 'Layer', batchModes: ALL_BATCH_MODES, inputTypes: ['ingredient', 'mix'] },
-  shape: { code: 'shape', label: 'Shape', batchModes: [BATCH_MODES.fixed], inputTypes: ['layer', 'mix'] },
-  fill: { code: 'fill', label: 'Fill', batchModes: ALL_BATCH_MODES, inputTypes: ['shape', 'mix', 'ingredient'] },
-  bake: { code: 'bake', label: 'Bake', batchModes: [], inputTypes: ['shape'] },
-  top: { code: 'top', label: 'Top', batchModes: [], inputTypes: ['bake', 'mix', 'ingredient'] },
-  slice: { code: 'slice', label: 'Slice', batchModes: [], inputTypes: ['bake']  },
-  package: { code: 'package', label: 'Package', batchModes: [], inputTypes: ['bake', 'slice'] },
+  ingredient: {
+    code: 'ingredient', label: 'Ingredient',
+    batchMeasure: BATCH_MEASURES.kgs.code,
+    batchModes: [],
+    inputTypes: []
+  },
+  mix: {
+    code: 'mix', label: 'Mix',
+    batchMeasure: BATCH_MEASURES.kgs.code,
+    batchModes: ALL_BATCH_MODES,
+    inputTypes: ['ingredient', 'mix']
+    },
+  ferment: {
+    code: 'ferment', label: 'Ferment',
+    batchMeasure: BATCH_MEASURES.kgs.code,
+    batchModes: ALL_BATCH_MODES,
+    inputTypes: ['mix']
+    },
+  layer: {
+    code: 'layer', label: 'Layer',
+    batchMeasure: BATCH_MEASURES.kgs.code,
+    batchModes: ALL_BATCH_MODES,
+    inputTypes: ['ingredient', 'mix']
+    },
+  shape: {
+    code: 'shape', label: 'Shape',
+    batchMeasure: BATCH_MEASURES.na.code,
+    batchModes: [BATCH_MODES.fixed],
+    inputTypes: ['layer', 'mix']
+    },
+  fill: {
+    code: 'fill', label: 'Fill',
+    batchMeasure: BATCH_MEASURES.units.code,
+    batchModes: ALL_BATCH_MODES,
+    inputTypes: ['shape', 'mix', 'ingredient']
+    },
+  bake: {
+    code: 'bake', label: 'Bake',
+    batchMeasure: BATCH_MEASURES.units.code,
+    batchModes: [],
+    inputTypes: ['shape']
+    },
+  top: {
+    code: 'top', label: 'Top',
+    batchMeasure: BATCH_MEASURES.units.code,
+    batchModes: [],
+    inputTypes: ['bake', 'mix', 'ingredient']
+    },
+  slice: {
+    code: 'slice', label: 'Slice',
+    batchMeasure: BATCH_MEASURES.units.code,
+    batchModes: [],
+    inputTypes: ['bake']
+    },
+  package: {
+    code: 'package', label: 'Package',
+    batchMeasure: BATCH_MEASURES.units.code,
+    batchModes: [],
+    inputTypes: ['bake', 'slice']
+  },
 }
 
 const MIX_TYPES = {
