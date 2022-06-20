@@ -164,7 +164,8 @@ function validateMeasures(measure, values) {
   if (code === PERCENT_MEASURES.actual.code) {
     const message = `${PERCENT_MEASURES[code].label} measure requires values to total 100%.`
     const total = values.reduce((memo, val) => memo + val, 0)
-    return { ok: total === 100, message }
+    if (total === 100) return { ok: true, message }
+    return { ok: false, message: `${message} Currently ${total.toString()}` }
   }
   return { ok: false, message: `Invalid measure code '${code}'` }
 }
