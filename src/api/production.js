@@ -1,3 +1,5 @@
+const numberUtil = require('../util/number')
+
 const BATCH_MODES = {
   none: {
     code: 'none', label: 'None',
@@ -163,7 +165,7 @@ function validateMeasures(measure, values) {
   }
   if (code === PERCENT_MEASURES.actual.code) {
     const message = `${PERCENT_MEASURES[code].label} measure requires values to total 100%.`
-    const total = values.reduce((memo, val) => memo + val, 0)
+    const total = numberUtil.round(values.reduce((memo, val) => memo + val, 0), 3)
     if (total === 100) return { ok: true, message }
     return { ok: false, message: `${message} Currently ${total.toString()}` }
   }
