@@ -5,7 +5,7 @@ function isMultiple(numerator, denominator) {
 }
 
 function round(number, places) {
-  Number.parseFloat(number.toFixed(places))
+  return Number.parseFloat(number.toFixed(places))
 }
 
 module.exports = {
