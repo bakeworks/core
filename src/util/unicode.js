@@ -5,6 +5,7 @@
 
 const DIAMOND_SOLID_4 = '\u2756'
 const ESCAPE = `\u238B`
+const LOOPED_SQUARE = `u\2318`
 
 module.exports = {
   ARROW_LEFT: '\u2190',
@@ -32,8 +33,9 @@ module.exports = {
   DIAMOND_SOLID_4,
 
   ESCAPE,
+  LOOPED_SQUARE,
 
 // app specific
-  STANDING_ORDER: ESCAPE // DIAMOND_SOLID_4
+  STANDING_ORDER: LOOPED_SQUARE // DIAMOND_SOLID_4
 }
 
