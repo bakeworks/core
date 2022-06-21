@@ -3,12 +3,13 @@
 // https://www.rapidtables.com/code/text/unicode-characters.html
 // https://unicode-search.net/unicode-namesearch.pl?term=DIAMOND
 
+const ARROW_LEFT = '\u2190'
 const DIAMOND_SOLID_4 = '\u2756'
 const ESCAPE = `\u238B`
 const LOOPED_SQUARE = `\u2318`
 
 module.exports = {
-  ARROW_LEFT: '\u2190',
+  ARROW_LEFT,
   ARROW_RIGHT: '\u2192',
   ARROW_UP: '\u2191',
   ARROW_DOWN: '\u2193',
