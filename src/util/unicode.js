@@ -7,6 +7,7 @@ const ARROW_LEFT = '\u2190'
 const DIAMOND_SOLID_4 = '\u2756'
 const ESCAPE = `\u238B`
 const LOOPED_SQUARE = `\u2318`
+const REWIND = `\u23ea`
 
 module.exports = {
   ARROW_LEFT,
@@ -35,8 +36,9 @@ module.exports = {
 
   ESCAPE,
   LOOPED_SQUARE,
+  REWIND,
 
 // app specific
-  STANDING_ORDER: ARROW_LEFT // DIAMOND_SOLID_4
+  STANDING_ORDER: REWIND // DIAMOND_SOLID_4
 }
 
