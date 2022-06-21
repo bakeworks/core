@@ -30,7 +30,7 @@ module.exports = {
 
   DIAMOND_SOLID_4,
 
-  ESCAPE: `\238B`,
+  ESCAPE: `\u238B`,
 
 // app specific
   STANDING_ORDER: ESCAPE // DIAMOND_SOLID_4
