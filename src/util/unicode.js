@@ -2,12 +2,14 @@
 // https://graphemica.com/categories/other-punctuation
 // https://www.rapidtables.com/code/text/unicode-characters.html
 // https://unicode-search.net/unicode-namesearch.pl?term=DIAMOND
+// https://en.wikipedia.org/wiki/List_of_Unicode_characters#Arrows
 
 const ARROW_LEFT = '\u2190'
 const DIAMOND_SOLID_4 = '\u2756'
 const ESCAPE = `\u238B`
 const LOOPED_SQUARE = `\u2318`
-const REWIND = `\u23ea`
+const REWIND_BUTTON = `\u23ea`
+const FISHEYE = `\u25C9`
 
 module.exports = {
   ARROW_LEFT,
@@ -36,9 +38,10 @@ module.exports = {
 
   ESCAPE,
   LOOPED_SQUARE,
-  REWIND,
+  REWIND_BUTTON,
+  FISHEYE,
 
 // app specific
-  STANDING_ORDER: REWIND // DIAMOND_SOLID_4
+  STANDING_ORDER: FISHEYE // DIAMOND_SOLID_4
 }
 
