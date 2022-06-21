@@ -4,6 +4,7 @@
 // https://unicode-search.net/unicode-namesearch.pl?term=DIAMOND
 
 const DIAMOND_SOLID_4 = '\u2756'
+const ESCAPE = `\u238B`
 
 module.exports = {
   ARROW_LEFT: '\u2190',
@@ -30,7 +31,7 @@ module.exports = {
 
   DIAMOND_SOLID_4,
 
-  ESCAPE: `\u238B`,
+  ESCAPE,
 
 // app specific
   STANDING_ORDER: ESCAPE // DIAMOND_SOLID_4
