@@ -5,7 +5,7 @@
 
 const DIAMOND_SOLID_4 = '\u2756'
 const ESCAPE = `\u238B`
-const LOOPED_SQUARE = `u\2318`
+const LOOPED_SQUARE = `\u2318`
 
 module.exports = {
   ARROW_LEFT: '\u2190',
