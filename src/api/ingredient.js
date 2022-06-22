@@ -346,7 +346,7 @@ function parseAdditivesText() {
   const result = []
   console.debug(`bakeworks-core.src.api.ingredient.parseAdditivesText: entries.length=${entries.length}`)
   entries.forEach(e => {
-    [code, label] = e.split(':')
+    const [code, label] = e.split(':')
     console.debug(`bakeworks-core.src.api.ingredient.parseAdditivesText: code=${code} label=${label}`)
     result.push([code, label])
   })
