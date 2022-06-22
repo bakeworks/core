@@ -338,8 +338,7 @@ const ADDITIVES_TEXT = `–:Monk fruit extract or luo han guo extract
 1518:Triacetin
 1520:Propylene glycol
 1521:Polyethylene glycol 8000
-1522:Calcium lignosulphonate (40-65)
-`
+1522:Calcium lignosulphonate (40-65)`
 
 function parseAdditivesText() {
   const entries = ADDITIVES_TEXT.split(`\n`)
@@ -348,7 +347,6 @@ function parseAdditivesText() {
   entries.forEach(e => {
     const [code, label] = e.split(':')
     console.debug(`bakeworks-core.src.api.ingredient.parseAdditivesText: code=${code} label=${label}`)
-    result.push([code, label])
   })
   return result
 }
