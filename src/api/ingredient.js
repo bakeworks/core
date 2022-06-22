@@ -352,3 +352,7 @@ function parseAdditivesText() {
 }
 
 const ADDITIVES = parseAdditivesText()
+
+module.exports = {
+  ADDITIVES
+}
