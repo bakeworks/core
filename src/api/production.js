@@ -29,70 +29,70 @@ const BATCH_MEASURES = {
 
 const RECIPE_TYPES = {
   ingredient: {
-    code: 'ingredient', label: 'Ingredient',
+    code: 'ingredient', label: 'Ingredient', plural: 'Ingredients',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: [],
     inputCount: { min: 0, max: 0 },
     inputTypes: [],
   },
   mix: {
-    code: 'mix', label: 'Mix',
+    code: 'mix', label: 'Mix', plural: 'Mixes',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 2, max: 99 },
     inputTypes: ['ingredient', 'mix'],
     },
   ferment: {
-    code: 'ferment', label: 'Ferment',
+    code: 'ferment', label: 'Ferment', plural: 'Ferments',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 1, max: 1 },
     inputTypes: ['mix']
     },
   layer: {
-    code: 'layer', label: 'Layer',
+    code: 'layer', label: 'Layer', plural: 'Layers',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 1, max: 99  },
     inputTypes: ['ingredient', 'mix']
     },
   shape: {
-    code: 'shape', label: 'Shape',
+    code: 'shape', label: 'Shape', plural: 'Shapes',
     batchMeasure: BATCH_MEASURES.na.code,
     batchModes: [BATCH_MODES.fixed],
     inputCount: { min: 1, max: 99  },
     inputTypes: ['layer', 'mix']
     },
   fill: {
-    code: 'fill', label: 'Fill',
+    code: 'fill', label: 'Fill', plural: 'Fills',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 1, max: 99  },
     inputTypes: ['shape', 'mix', 'ingredient']
     },
   bake: {
-    code: 'bake', label: 'Bake',
+    code: 'bake', label: 'Bake', plural: 'Bakes',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 1, max: 1 },
     inputTypes: ['shape']
     },
   top: {
-    code: 'top', label: 'Top',
+    code: 'top', label: 'Top', plural: 'Tops',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 2, max: 99 },
     inputTypes: ['bake', 'mix', 'ingredient']
     },
   slice: {
-    code: 'slice', label: 'Slice',
+    code: 'slice', label: 'Slice', plural: 'Slices',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 1, max: 1 },
     inputTypes: ['bake']
     },
   package: {
-    code: 'package', label: 'Package',
+    code: 'package', label: 'Package', plural: 'Packages',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 1, max: 1 },
@@ -104,14 +104,17 @@ const MIX_TYPES = {
   dough: {
     code: 'dough',
     label: 'Dough',
+    plural: 'Doughs',
   },
   starter: {
     code: 'starter',
     label: 'Starter',
+    plural: 'Starters',
   },
   batter: {
     code: 'batter',
     label: 'Batter',
+    plural: 'Batters',
   },
 }
 
