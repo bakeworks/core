@@ -123,13 +123,13 @@ function mixTypeHasOptionalStage(mixType, stageCode) {
 }
 
 const DAYS = {
-  sun: { dow: 0, label: 'Sun' },
-  mon: { dow: 1, label: 'Mon' },
-  tue: { dow: 2, label: 'Tue' },
-  wed: { dow: 3, label: 'Wed' },
-  thu: { dow: 4, label: 'Thu' },
-  fri: { dow: 5, label: 'Fri' },
-  sat: { dow: 6, label: 'Sat' },
+  sun: { dow: 0, label: 'Sun', longLabel: 'Sunday' },
+  mon: { dow: 1, label: 'Mon', longLabel: 'Monday' },
+  tue: { dow: 2, label: 'Tue', longLabel: 'Tuesday' },
+  wed: { dow: 3, label: 'Wed', longLabel: 'Wednesday' },
+  thu: { dow: 4, label: 'Thu', longLabel: 'Thursday' },
+  fri: { dow: 5, label: 'Fri', longLabel: 'Friday' },
+  sat: { dow: 6, label: 'Sat', longLabel: 'Saturday' },
 }
 
 const DAY_KEYS = Object.keys(DAYS)
