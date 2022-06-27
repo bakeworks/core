@@ -2,7 +2,7 @@
 // TODO: full locale support
 // NB: we need to run front end and back end
 
-module.exports = {
+export default {
   months: [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'

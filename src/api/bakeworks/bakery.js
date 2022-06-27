@@ -10,7 +10,7 @@ import bakeryAccounting from '../bakery/accounting'
 /*
 ** Defaults for new bakery
 */
-const DEFAULTS = {
+const DEFAULT = {
   name: 'Bakery Name',
   subscription: {
     modeCode: subscription.MODES.fixed.code,
@@ -33,5 +33,5 @@ const DEFAULTS = {
 }
 
 export default {
-  DEFAULTS
+  DEFAULT
 }

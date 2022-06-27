@@ -8,7 +8,7 @@ function round(number, places) {
   return Number.parseFloat(number.toFixed(places))
 }
 
-module.exports = {
+export default {
   HEX_DIGITS,
   isMultiple,
   round

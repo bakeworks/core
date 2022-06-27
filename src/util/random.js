@@ -1,12 +1,12 @@
 const number = require('./number')
 
 function int(max = Number.MAX_SAFE_INTEGER) {
-  return Math.round(Math.random() * max)  
+  return Math.round(Math.random() * max)
 }
 
 function intBetween(min, max) {
   if (min > max) return intBetween(max, min)
-  return min + Math.round(Math.random() * (max - min))  
+  return min + Math.round(Math.random() * (max - min))
 }
 
 function element(array) {
@@ -42,7 +42,7 @@ function uuid(length = 16) {
   return uuid
 }
 
-module.exports = {
+export default {
   int,
   intBetween,
   element,

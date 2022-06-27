@@ -2,11 +2,11 @@
 
 /*
  * Modified clone of Quasar utils date.js.
- * 
+ *
  * Repo: https://github.com/quasarframework
- * 
+ *
  * Copyright & license: https://github.com/quasarframework/quasar/blob/dev/LICENSE
- * 
+ *
  */
 
 const
@@ -900,7 +900,7 @@ function clone (date) {
     : date
 }
 
-module.exports = {
+export default {
   isValid,
   extractDate,
   buildDate,

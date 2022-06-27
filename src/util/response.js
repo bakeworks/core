@@ -1,4 +1,4 @@
-/* qr.js
+/* response.js
 **
 ** Encapsulating reQuest/Response protocols.
 **
@@ -6,9 +6,6 @@
 ** remotely (eg http && socket requests).
 **
 */
-
-// TODO: this must be same as client src/lib/errors.js
-// TODO: should be in common module
 
 /*
 https://en.wikipedia.org/wiki/HTTP_403

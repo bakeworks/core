@@ -1,6 +1,10 @@
-const random = require('bakeworks-core/src/util/random')
+import random from './random'
 
 // Returns a 16 character 'unique' id.
-export function newUUID() {
+function newUUID() {
   return random.uuid(16)
+}
+
+export default {
+  newUUID
 }
