@@ -1,4 +1,4 @@
-const string = require('../../../util/string')
+const string = require('../../../../util/string')
 const origins = require('../deprecated/origins')
 const status = require('../deprecated/status')
 const batching = require('../deprecated/batching')
