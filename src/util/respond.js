@@ -1,4 +1,4 @@
-/* response.js
+/* respond.js
 **
 ** Encapsulating reQuest/Response protocols.
 **
