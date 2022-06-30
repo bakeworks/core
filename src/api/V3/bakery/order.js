@@ -1,5 +1,5 @@
-const csvUtil = require('../../util/csv')
-const dateUtil = require('../../util/date')
+const csvUtil = require('../../../util/csv')
+const dateUtil = require('../../../util/date')
 
 const COMMA = ','
 const STANDING_WEEK = 'standing' // special weeks are YYYYMMDD
@@ -21,9 +21,6 @@ const PERIOD_FORMAT = dateUtil.DAY_MONTH_NAME_LONG
 
 const ZERO_QTYS = [0, 0, 0, 0, 0, 0, 0]
 const NULL_QTYS = [-1, -1, -1, -1, -1, -1, -1]
-
-const ZERO_QTYS_CSV = '0,0,0,0,0,0,0'
-const NULL_QTYS_CSV = '-1,-1,-1,-1,-1,-1,-1'
 
 const DAY_TAGS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 const WEEK_TOT_TAG = 'tot'
@@ -178,16 +175,16 @@ function mapQtysToDays (quantities) {
 }
 
 // Takes standing and special quantities and returns object
-// with standing and current quantities (resolving special/standing).
-// Given quantities may be CSV strings or 7-element arrays mapping
+// with standing and current quantities, resolving special/standing.
+// Given quantities should 7-element arrays mapping
 // to each day of the week.
-function mapQtysToArrays (standingQtys, specialQtys) {
+function resolveQtys(standingQtys, specialQtys) {
   const resolve = (qtys, dflt) => {
     return qtys === undefined ? dflt : ((typeof qtys === 'string') ? csvUtil.parseIntArray(qtys) : qtys)
   }
   const standing = resolve(standingQtys, ZERO_QTYS)
   const special = resolve(specialQtys, NULL_QTYS)
-  const current = standing.slice(0) // clone
+  const current = [...standing] // clone
   for (let i = 0; i < 7; i++) {
     const q = special[i]
     current[i] = q < 0 ? standing[i] : q
@@ -210,7 +207,7 @@ function newUnresolvedItem (customerId, productId, weekOrPeriod, standingQtys, s
     customerId,
     productId,
     week,
-    ...mapQtysToArrays(standingQtys, specialQtys)
+    ...resolveQtys(standingQtys, specialQtys)
   }
 }
 

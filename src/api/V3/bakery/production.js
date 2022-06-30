@@ -1,4 +1,4 @@
-const numberUtil = require('../../util/number')
+const numberUtil = require('../../../util/number')
 
 const BATCH_MODES = {
   none: {

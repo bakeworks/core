@@ -28,7 +28,11 @@ const PLATFORMS = {
   },
   stripe: {
     code: 'STRIPE',
-    name: 'Stripe'
+    name: 'Stripe',
+    webUrl: 'https://www.stripe.com/',
+    apiUrl: {
+      global: 'https://api.stripe.com/v1/'
+    }
   },
   shopify: {
     code: 'SHOPIFY',
