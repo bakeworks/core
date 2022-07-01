@@ -4,7 +4,7 @@
 
 const PLATFORMS = {
   xero: {
-    code: 'XERO',
+    code: 'xero',
     name: 'Xero',
     webUrl: 'https://www.xero.com/',
     apiUrl: {
@@ -12,7 +12,7 @@ const PLATFORMS = {
     }
   },
   myob: {
-    code: 'MYOB',
+    code: 'myob',
     name: 'MYOB',
     webUrl: 'https://www.myob.com/',
     apiUrl: {
@@ -21,7 +21,16 @@ const PLATFORMS = {
     }
   },
   quickbooks: {
-    code: 'QB',
+    code: 'quickbooks',
     name: 'Quick Books'
   },
+}
+
+const SUPPORTED_PLATFORM_CODES = [
+  'xero',
+]
+
+export default {
+  PLATFORMS,
+  SUPPORTED_PLATFORM_CODES
 }
