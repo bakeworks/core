@@ -290,8 +290,6 @@ module.exports = {
   PERIOD_FORMAT,
   ZERO_QTYS,
   NULL_QTYS,
-  ZERO_QTYS_CSV,
-  NULL_QTYS_CSV,
   DAY_TAGS,
   WEEK_TOT_TAG,
 
