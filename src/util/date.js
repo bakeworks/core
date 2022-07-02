@@ -125,7 +125,7 @@ function weekYYYYMMDDs (firstWeekYYYYMMDD, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   return weekDates(firstWeekYYYYMMDD, nWeeks).map(d => format(d, YYYYMMDD))
 }
 
-export default {
+module.exports =  {
   YYYYMMDD,
   YYYYMMDD_DASH,
   YYYYMMDD_SLASH,

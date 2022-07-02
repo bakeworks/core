@@ -11,7 +11,7 @@ const LOOPED_SQUARE = `\u2318`
 const REWIND_BUTTON = `\u23ea`
 const FISHEYE = `\u25C9`
 
-export default {
+module.exports =  {
   ARROW_LEFT,
   ARROW_RIGHT: '\u2192',
   ARROW_UP: '\u2191',

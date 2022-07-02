@@ -142,7 +142,7 @@ function toRouter(routerResponse, requestResult) {
   routerResponse.status(code).send(requestResult)
 }
 
-export default {
+module.exports =  {
   ...ERROR_CODES, // splat to make usage concise
   ERROR_LABELS,
   HTTP_CODES,

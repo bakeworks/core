@@ -5,6 +5,6 @@ function newUUID() {
   return random.uuid(16)
 }
 
-export default {
+module.exports =  {
   newUUID
 }

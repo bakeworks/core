@@ -8,6 +8,6 @@ function dump(path, content) {
   })
 }
 
-export default {
+module.exports =  {
   dump
 }

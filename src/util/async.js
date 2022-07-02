@@ -15,7 +15,7 @@ async function forEachAsync(array, callback) {
   }
 }
 
-export default {
+module.exports =  {
   foreverAsync,
   forEachAsync
 }

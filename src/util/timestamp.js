@@ -38,7 +38,7 @@ function isTimestampExpired(timestamp) {
   return millisecsSinceTimestamp(timestamp) <= 0
 }
 
-export default {
+module.exports =  {
   SECONDS_IN_DAY,
   MILLISECS_IN_MINUTE,
   MILLISECS_IN_HOUR,
