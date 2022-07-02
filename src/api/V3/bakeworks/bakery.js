@@ -2,10 +2,10 @@
 ** BAKERY AS SUBSCRIBER TO BAKEWORKS
 */
 
-import subscription from './subscription'
-import payment from './payment'
-import bakeryPayment from '../bakery/payment'
-import bakeryAccounting from '../bakery/accounting'
+const subscription = require('./subscription')
+const payment = require('./payment')
+const bakeryPayment = require('../bakery/payment')
+const bakeryAccounting = require('../bakery/accounting')
 
 /*
 ** Defaults for new bakery

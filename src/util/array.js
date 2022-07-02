@@ -46,7 +46,7 @@ function deleteOne(array, matchFn) {
   return array
 }
 
-module.exports =  {
+module.exports = {
   sum,
   difference,
   intersection,

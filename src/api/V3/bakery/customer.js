@@ -1,4 +1,4 @@
-import strUtil from '../../../util/string'
+const strUtil = require('../../../util/string')
 
 const hasXeroInvoicing = customer => customer.xeroInvoicing
 
