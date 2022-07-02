@@ -6,7 +6,7 @@ import collections from './collections'
 */
 
 module.exports = {
-  name: 'V2', // local domain name
+  name: 'v2', // local domain name
   dbs: {
     tbsByron: {
       name: 'tbsByron',

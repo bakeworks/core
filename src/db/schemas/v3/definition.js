@@ -7,7 +7,7 @@ import BAKERY_COLLECTIONS from './collections/bakery'
 */
 
 module.exports = {
-  name: 'V3', // local domain name
+  name: 'v2', // local domain name
   dbs: {
     // this is our admin database
     bakeworks: {
