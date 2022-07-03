@@ -1,5 +1,5 @@
-const csvUtil = require('../../../util/csv')
-const dateUtil = require('../../../util/date')
+import csvUtil from '../../../util/csv'
+import dateUtil from '../../../util/date'
 
 const COMMA = ','
 const STANDING_WEEK = 'standing' // special weeks are YYYYMMDD
