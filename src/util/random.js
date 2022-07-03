@@ -1,4 +1,4 @@
-import number from './number'
+import number from './number.js'
 
 function int(max = Number.MAX_SAFE_INTEGER) {
   return Math.round(Math.random() * max)

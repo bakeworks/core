@@ -1,8 +1,8 @@
 // https://quasar.dev/quasar-utils/date-utils
 // TODO: Quasar has many date utilities built-in
 
-import $qdate from './quasar-clone/date'
-import $unicode from './unicode'
+import $qdate from './quasar-clone/date.js'
+import $unicode from './unicode.js'
 
 const YYYYMMDD = 'YYYYMMDD'
 const YYYYMMDD_DASH = 'YYYY-MM-DD'
