@@ -39,7 +39,6 @@ for (const [key, coll] of Object.entries(v3.dbs.bakeworks.collections)) {
 ** `{ schemaName: 'v3', dbName: 'bakeryId', collName: 'recipes' }`
 */
 const bakery = {}
-Object.entries(v3.dbs.bakery.collections).forEach(([key, coll]) => {
 for (const [key, coll] of Object.entries(v3.dbs.bakeworks.collections)) {
   bakery[key] = bakeryid => {
     return {
@@ -55,3 +54,4 @@ export default {
   bakeworks,
   bakery,
 }
+
