@@ -156,7 +156,7 @@ function toRouter(routerResponse, response, options = {}) {
   }
 }
 
-module.exports =  {
+export default  {
   ...ERROR_CODES, // splat to make usage concise
   ERROR_LABELS,
   HTTP_CODES,

@@ -31,7 +31,7 @@ const map = {}
 all.forEach(x => map[x.code] = x)
 const DEFAULT = bakers
 
-module.exports = {
+export default {
   BAKERS_CODE,
   ACTUAL_CODE,
   bakers,

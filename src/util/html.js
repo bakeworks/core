@@ -84,7 +84,7 @@ function jsonToHtmlTable(json) {
   return html.div(table, 'font-family: helvetica')
 }
 
-module.exports =  {
+export default {
   tag,
   div,
   objectsToHtmlTable,

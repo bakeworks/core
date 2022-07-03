@@ -7,7 +7,7 @@ const enums = {
     code: 'supplied', label: 'Supplied' },
 }
 
-module.exports = {
+export default {
   enums
 }
 

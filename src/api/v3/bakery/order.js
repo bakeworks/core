@@ -273,7 +273,7 @@ function itemQuantitiesToCSVs (item) {
   return quantitiesByDayToCSVs(item.standing, item.current)
 }
 
-module.exports = {
+export default  {
 
   STANDING_WEEK,
   STANDING_LABEL,

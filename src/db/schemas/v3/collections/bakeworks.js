@@ -1,5 +1,5 @@
 // BakeWorks has its own db of users, client bakeries, ...
-module.exports = {
+export default {
   users: {
     name: 'users',
     fields: {

@@ -353,6 +353,6 @@ function parseAdditivesText() {
 
 const ADDITIVES = parseAdditivesText()
 
-module.exports = {
+export default {
   ADDITIVES
 }

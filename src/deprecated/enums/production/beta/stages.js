@@ -158,7 +158,7 @@ all.forEach(x => {
   x.outputs = getOutputStages(x.code)
 })
 
-module.exports = {
+export default {
   codes,
   enums,
   all

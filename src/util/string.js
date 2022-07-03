@@ -36,7 +36,7 @@ const le = (a, b, ignorecase = true) => cmp(a, b, ignorecase) <= 0
 const gt = (a, b, ignorecase = true) => cmp(a, b, ignorecase) === 1
 const ge = (a, b, ignorecase = true) => cmp(a, b, ignorecase) >= 0
 
-module.exports =  {
+export default  {
   capitalise,
   camelCase,
   pluralise,

@@ -1,6 +1,6 @@
 // each bakery has its own database
 // with these collections
-module.exports = {
+export default {
   permissions: { // 'r' | 'w'
     /*
     fields: {

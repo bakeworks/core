@@ -21,6 +21,6 @@ function stringify(obj) {
   return JSON.stringify(obj, getCircularReplacer())
 }
 
-module.exports =  {
+export default  {
   stringify
 }

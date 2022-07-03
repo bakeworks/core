@@ -900,7 +900,7 @@ function clone (date) {
     : date
 }
 
-module.exports =  {
+export default  {
   isValid,
   extractDate,
   buildDate,

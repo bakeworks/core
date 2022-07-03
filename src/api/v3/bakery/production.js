@@ -175,7 +175,7 @@ function validateMeasures(measure, values) {
   return { ok: false, message: `Invalid measure code '${code}'` }
 }
 
-module.exports = {
+export default  {
   MIX_TYPES,
   BATCH_MODES,
   ALL_BATCH_MODES,

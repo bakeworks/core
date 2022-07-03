@@ -25,7 +25,7 @@ function objectsById(objects) {
   return map
 }
 
-module.exports =   {
+export default   {
   resolveJoin,
   objectsById
 }

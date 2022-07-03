@@ -44,7 +44,7 @@ const map = {}
 all.forEach(x => map[x.code] = x)
 const DEFAULT = staff
 
-module.exports = {
+export default {
   ADMINISTRATOR_CODE,
   MANAGER_CODE,
   STAFF_CODE,

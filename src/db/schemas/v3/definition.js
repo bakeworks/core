@@ -6,7 +6,7 @@ import BAKERY_COLLECTIONS from './collections/bakery'
 ** V3 is read/write
 */
 
-module.exports = {
+export default {
   name: 'v2', // local domain name
   dbs: {
     // this is our admin database

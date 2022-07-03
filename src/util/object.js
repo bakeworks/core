@@ -2,6 +2,6 @@ function deepClone(object) {
   return structuredClone(object)
 }
 
-module.exports =  {
+export default  {
   deepClone
 }

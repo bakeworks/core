@@ -5,7 +5,7 @@ import collections from './collections'
 ** V2 is read only
 */
 
-module.exports = {
+export default {
   name: 'v2', // local domain name
   dbs: {
     tbsByron: {

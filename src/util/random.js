@@ -42,7 +42,7 @@ function uuid(length = 16) {
   return uuid
 }
 
-module.exports = {
+export default {
   int,
   intBetween,
   element,

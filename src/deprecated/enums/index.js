@@ -8,7 +8,7 @@ function resolveEnum (code, enumsMap, description) {
   return e
 }
 
-module.exports = {
+export default  {
   // product: require('./production'),
   // recipe: require('./recipe'),
   // user: require('./user'),
