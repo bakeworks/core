@@ -7,7 +7,7 @@ import BAKERY_COLLECTIONS from './collections/bakery.js'
 */
 
 export default {
-  name: 'v2', // local domain name
+  name: 'v3', // local domain name
   dbs: {
     // this is our admin database
     bakeworks: {

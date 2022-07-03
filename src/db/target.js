@@ -19,6 +19,7 @@ function resolve(args) {
 ** `{ schemaName: 'v3', dbName: 'bakeworks', collName: 'bakeries' }`
 */
 const bakeworks = {}
+console.debug(`${__filename}: Object=${Object} v3=${v3}`)
 Object.entries(v3.dbs.bakeworks.collections).forEach(([key, coll]) => {
   bakeworks[key] = {
     schemaName: v3.name,
