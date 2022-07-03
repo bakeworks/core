@@ -1,5 +1,4 @@
-import schemas from './schemas/index.js'
-const v3 = schemas.v3
+import { v3 } from './schemas/index.js'
 
 // args: { schemaName, dbName, collName }
 // if schemaName is undefined set to V3 schema name
