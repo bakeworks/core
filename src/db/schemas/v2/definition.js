@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import collections from './collections'
+import collections from './collections.js'
 
 /*
 ** V2 is read only

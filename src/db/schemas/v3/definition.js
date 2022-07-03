@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-import BAKEWORKS_COLLECTIONS from './collections/bakeworks'
-import BAKERY_COLLECTIONS from './collections/bakery'
+import BAKEWORKS_COLLECTIONS from './collections/bakeworks.js'
+import BAKERY_COLLECTIONS from './collections/bakery.js'
 
 /*
 ** V3 is read/write

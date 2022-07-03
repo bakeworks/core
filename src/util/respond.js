@@ -35,7 +35,7 @@ See "403 substatus error codes for IIS" for possible reasons of why the webserve
   is refusing to fulfill the request.
 */
 
-import htmlUtil from './html'
+import htmlUtil from './html.js'
 
 const ERROR_CODES = {
   INVALID_EMAIL: 'INVALID_EMAIL',
