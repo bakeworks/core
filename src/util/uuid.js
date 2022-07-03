@@ -1,4 +1,4 @@
-const random = require('./random')
+import random from './random.js'
 
 // Returns a 16 character 'unique' id.
 function newUUID() {

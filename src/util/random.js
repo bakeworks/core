@@ -1,4 +1,4 @@
-const number = require('./number')
+import number from './number'
 
 function int(max = Number.MAX_SAFE_INTEGER) {
   return Math.round(Math.random() * max)
