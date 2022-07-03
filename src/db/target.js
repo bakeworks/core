@@ -19,7 +19,7 @@ function resolve(args) {
 ** `{ schemaName: 'v3', dbName: 'bakeworks', collName: 'bakeries' }`
 */
 const bakeworks = {}
-console.debug(`target.js: Object.entries({a: 'A'})=${Object.entries({a: 'A'})} v3=${v3}`)
+console.debug(`target.js: v3=${v3}  v3=${v3}  v3.dbs=${v3.dbs}  v3.dbs.bakeworks=${v3.dbs.bakeworks}  v3.dbs.bakeworks.collections=${v3.dbs.bakeworks.collections}`)
 Object.entries(v3.dbs.bakeworks.collections).forEach(([key, coll]) => {
   bakeworks[key] = {
     schemaName: v3.name,
