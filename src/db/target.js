@@ -20,13 +20,13 @@ function resolve(args) {
 */
 const bakeworks = {}
 console.debug(`target.js: v3=${v3}  v3=${v3}  v3.dbs=${v3.dbs}  v3.dbs.bakeworks=${v3.dbs.bakeworks}  v3.dbs.bakeworks.collections=${v3.dbs.bakeworks.collections}`)
-Object.entries(v3.dbs.bakeworks.collections).forEach(([key, coll]) => {
+for (const [key, coll] of Object.entries(v3.dbs.bakeworks.collections)) {
   bakeworks[key] = {
     schemaName: v3.name,
     dbName: v3.dbs.bakeworks,
     collName: coll.name
   }
-})
+}
 
 /* BAKERY : EXAMPLE USAGE
 **
@@ -40,6 +40,7 @@ Object.entries(v3.dbs.bakeworks.collections).forEach(([key, coll]) => {
 */
 const bakery = {}
 Object.entries(v3.dbs.bakery.collections).forEach(([key, coll]) => {
+for (const [key, coll] of Object.entries(v3.dbs.bakeworks.collections)) {
   bakery[key] = bakeryid => {
     return {
       schemaName: v3.name,
@@ -47,7 +48,7 @@ Object.entries(v3.dbs.bakery.collections).forEach(([key, coll]) => {
       collName: coll.name
     }
   }
-})
+}
 
 export default {
   resolve,
