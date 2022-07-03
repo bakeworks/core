@@ -8,6 +8,11 @@ function resolve(args) {
   return { schemaName, dbName, collName }
 }
 
+const bakeworks = collName => ({ schemaName = v3.name, dbName: v3.dbs.bakeworks, collName })
+const bakery = (bakeryId, collName) => ({ schemaName = v3.name, dbName: bakeryId, collName })\
+
 export default {
-  resolve
+  resolve,
+  bakeworks,
+  bakery,
 }

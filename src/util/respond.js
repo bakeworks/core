@@ -1,3 +1,4 @@
+
 /* respond.js
 **
 ** Encapsulating reQuest/Response protocols.
@@ -33,6 +34,8 @@ Error 401:qr
 See "403 substatus error codes for IIS" for possible reasons of why the webserver
   is refusing to fulfill the request.
 */
+
+import htmlUtil from './html'
 
 const ERROR_CODES = {
   INVALID_EMAIL: 'INVALID_EMAIL',
@@ -125,8 +128,11 @@ function stringify(res) {
     : `${res.error.req}: ERROR : ${res.error ? res.error.code : 'NULL_ERROR'}`
 }
 
-function httpCode(res) {
-  const code = HTTP_CODE[res.error.code]
+function httpCode(response) {
+  if (response.success) {
+    return 200
+  }
+  const code = HTTP_CODE[response.error.code]
   if (!code) {
     console.debug('==============================================================================')
     console.debug(`bakeworks-core/util/response/httpCode(res.error: ${JSON.stringify(res.error)})`)
@@ -135,11 +141,19 @@ function httpCode(res) {
   return code
 }
 
-function toRouter(routerResponse, requestResult) {
-  const code = requestResult.success
-    ? 200
-    : httpCode(requestResult)
-  routerResponse.status(code).send(requestResult)
+/* routerResponse is expcted to behave as Express Router response object.
+**
+** options if given may specify:  { format: 'json' | 'html }
+*/
+function toRouter(routerResponse, response, options = {}) {
+  const code = httpCode(response)
+  const { format } = options
+  if (response.success && format === 'html' ) {
+    const html = htmlUtil.jsonToHtmlTable(response.payload)
+    routerResponse.status(code).send(html)
+  } else {
+    routerResponse.status(code).send(response)
+  }
 }
 
 module.exports =  {
