@@ -1,4 +1,4 @@
-import numberUtil from '../../../util/number'
+import numberUtil from '../../../util/number.js'
 
 const BATCH_MODES = {
   none: {

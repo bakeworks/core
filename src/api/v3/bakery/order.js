@@ -1,5 +1,5 @@
-import csvUtil from '../../../util/csv'
-import dateUtil from '../../../util/date'
+import csvUtil from '../../../util/csv.js'
+import dateUtil from '../../../util/date.js'
 
 const COMMA = ','
 const STANDING_WEEK = 'standing' // special weeks are YYYYMMDD

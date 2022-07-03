@@ -2,10 +2,10 @@
 ** BAKERY AS SUBSCRIBER TO BAKEWORKS
 */
 
-import subscription from './subscription'
-import payment from './payment'
-import bakeryPayment from '../bakery/payment'
-import bakeryAccounting from '../bakery/accounting'
+import subscription from './subscription.js'
+import payment from './payment.js'
+import bakeryPayment from '../bakery/payment.js'
+import bakeryAccounting from '../bakery/accounting.js'
 
 /*
 ** Defaults for new bakery
