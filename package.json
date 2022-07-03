@@ -7,5 +7,6 @@
   "dependencies": {},
   "repository": "git@github.com:bakeworks/core.git",
   "author": "bakeworks <mail@bake.works>",
-  "private": true
+  "private": true,
+  "type": "module"
 }
