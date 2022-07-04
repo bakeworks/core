@@ -2,6 +2,7 @@
 // with these collections
 export default {
   permissions: { // 'r' | 'w'
+    name: 'permissions',
     /*
     fields: {
       _id: 'objectId',
@@ -19,6 +20,7 @@ export default {
     */
   },
   taxRates: {
+    name: 'taxRates',
     /*
     fields: {
       _id: 'objectId',
@@ -29,6 +31,7 @@ export default {
     */
   },
   products: { // sales products
+    name: 'products',
     /*
     fields: {
       _id: 'objectId',
@@ -49,6 +52,7 @@ export default {
     */
   },
   customers: {
+    name: 'customers',
     /*
     fields: {
       _id: 'objectId',
@@ -58,6 +62,7 @@ export default {
     */
   },
   outlets: {
+    name: 'outlets',
     /*
     fields: {
       _id: 'objectId',
@@ -67,6 +72,7 @@ export default {
     */
   },
   recipes: {
+    name: 'recipes',
     /*
     fields: {
       _id: 'objectId',
@@ -74,6 +80,7 @@ export default {
     */
   },
   standingOrders: {
+    name: 'standingOrders',
     /*
     fields: {
       _id: 'objectId',
@@ -83,6 +90,7 @@ export default {
     */
   },
   specialOrders: {
+    name: 'specialOrders',
     /*
     fields: {
       _id: 'objectId',
@@ -92,6 +100,7 @@ export default {
     */
   },
   productionSchedules: {
+    name: 'productionSchedules',
     /*
     fields: {
       _id: 'objectId',
@@ -100,6 +109,7 @@ export default {
     */
   },
   xeroAuths: {
+    name: 'xeroAuths',
     /*
     fields: {
       _id: 'objectId',
