@@ -53,5 +53,6 @@ export default {
   resolve,
   bakeworks,
   bakery,
+  v3
 }
 
