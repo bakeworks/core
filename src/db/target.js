@@ -51,7 +51,7 @@ for (const [key, coll] of Object.entries(v3.dbs.bakeworks.collections)) {
 
 const adminDb = {
   schemaName: v3.name,
-  dbName: v3.dbs.bakeworks.name,
+  dbName: 'admin',
 }
 
 export default {
