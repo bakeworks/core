@@ -43,7 +43,7 @@ for (const [key, coll] of Object.entries(v3.dbs.bakeworks.collections)) {
   bakery[key] = bakeryid => {
     return {
       schemaName: v3.name,
-      dbName: bakeryid,
+      dbName: `bakery-${bakeryid}`,
       collName: coll.name
     }
   }
