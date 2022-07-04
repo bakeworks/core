@@ -23,7 +23,7 @@ console.debug(`target.js: v3=${v3}  v3=${v3}  v3.dbs=${v3.dbs}  v3.dbs.bakeworks
 for (const [key, coll] of Object.entries(v3.dbs.bakeworks.collections)) {
   bakeworks[key] = {
     schemaName: v3.name,
-    dbName: v3.dbs.bakeworks,
+    dbName: v3.dbs.bakeworks.name,
     collName: coll.name
   }
 }
