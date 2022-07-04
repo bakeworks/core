@@ -103,7 +103,7 @@ function error(req, code, details) {
       details
     }
   }
-  console.error(`core/qr/error : QR ERROR: ${JSON.stringify(res)}`)
+  console.error(`bakeworks-core/src/util/respond/error : ${JSON.stringify(res)}`)
   return res
 }
 
@@ -112,7 +112,7 @@ function stackSuccess(req, prior) {
 }
 
 function stackError(req, prior) {
-  console.debug(`core/qr/stackError(req: ${req}, prior: ${JSON.stringify(prior)})`)
+  // console.debug(`bakeworks-core/src/util/respond/stackError(req: ${req}, prior: ${JSON.stringify(prior)})`)
   return error(req, prior.error.code, prior.error.details)
 }
 
