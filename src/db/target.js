@@ -53,16 +53,17 @@ for (const [key, coll] of Object.entries(domainV3.dbs.bakeworks.collections)) {
 **
 ** import target from 'bakeworks-core/src/db/target'
 **
-** `target.legacy.tbsByron.ingredients
+** `target.legacyV2.tbsByron.ingredients
 **
 ** will yield
 **
-** `{ domainName: 'v2', dbName: 'tbs-byron', collName: 'ingredients' }`
+** `{ domainName: 'v2', dbName: 'tbsByron', collName: 'ingredients' }`
 */
 const legacyV2 = {}
 for (const db of Object.values(domainV2.dbs)) {
+  legacyV2[db.name] = {}
   for (const [key, coll] of Object.entries(db.collections)) {
-    legacyV2[key] = {
+    legacyV2[db.name][key] = {
       domainName: domainV2.name,
       dbName: db.name,
       collName: coll.name
