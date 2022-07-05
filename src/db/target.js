@@ -61,7 +61,7 @@ for (const [key, coll] of Object.entries(schemaV3.dbs.bakeworks.collections)) {
 */
 const legacyV2 = {}
 for (const db of Object.values(schemaV2.dbs)) {
-  for (const coll of Object.values(db.collections)) {
+  for (const [key, coll] of Object.entries(db.collections)) {
     legacyV2[key] = {
       schemaName: schemaV2.name,
       dbName: db.name,
