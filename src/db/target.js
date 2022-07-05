@@ -39,11 +39,11 @@ for (const [key, coll] of Object.entries(domainV3.dbs.bakeworks.collections)) {
 ** `{ domainName: 'v3', dbName: 'bakeryId', collName: 'recipes' }`
 */
 const bakery = {}
-for (const [key, coll] of Object.entries(domainV3.dbs.bakeworks.collections)) {
-  bakery[key] = bakeryid => {
+for (const [key, coll] of Object.entries(domainV3.dbs.bakery.collections)) {
+  bakery[key] = bakeryId => {
     return {
       domainName: domainV3.name,
-      dbName: `bakery-${bakeryid}`,
+      dbName: `bakery-${bakeryId}`,
       collName: coll.name
     }
   }
