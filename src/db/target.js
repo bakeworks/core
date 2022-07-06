@@ -1,5 +1,7 @@
 import { v2 as domainV2, v3 as domainV3 } from './domains/index.js'
 
+const BAKERY_DB_PREFIX = 'bakery-'
+
 // args: { domainName, dbName, collName }
 // if domainName is undefined set to V3 domain name
 // return object { domainName, dbName, collName }
@@ -43,7 +45,7 @@ for (const [key, coll] of Object.entries(domainV3.dbs.bakery.collections)) {
   bakery[key] = bakeryId => {
     return {
       domainName: domainV3.name,
-      dbName: `bakery-${bakeryId}`,
+      dbName: `${BAKERY_DB_PREFIX}${bakeryId}`,
       collName: coll.name
     }
   }
@@ -75,8 +77,6 @@ const adminDb = {
   domainName: domainV3.name,
   dbName: 'admin',
 }
-
-const BAKERY_DB_PREFIX = 'bakery-'
 
 function isBakeryDbName(dbName) {
   return dbName.startsWith(BAKERY_DB_PREFIX)
