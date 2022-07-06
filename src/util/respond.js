@@ -38,7 +38,7 @@ See "403 substatus error codes for IIS" for possible reasons of why the webserve
 const _filename = 'bakeworks-core.src.util.respond'
 
 import htmlUtil from './html.js'
-import json from './json'
+import json from './json.js'
 
 const ERROR_CODES = {
   INVALID_EMAIL: 'INVALID_EMAIL',
