@@ -38,6 +38,7 @@ See "403 substatus error codes for IIS" for possible reasons of why the webserve
 const _filename = 'bakeworks-core.src.util.respond'
 
 import htmlUtil from './html.js'
+import json from './json'
 
 const ERROR_CODES = {
   INVALID_EMAIL: 'INVALID_EMAIL',
@@ -105,7 +106,7 @@ function error(req, code, details) {
       details
     }
   }
-  console.error(`${_filename}.error : ${JSON.stringify(res)}`)
+  console.error(`${_filename}.error : ${json.stringify(res)}`)
   return res
 }
 
@@ -114,7 +115,7 @@ function stackSuccess(req, prior) {
 }
 
 function stackError(req, prior) {
-  console.debug(`${_filename}.stackError(req: ${req}, prior: ${JSON.stringify(prior)})`)
+  console.debug(`${_filename}.stackError(req: ${req}, prior: ${json.stringify(prior)})`)
   return error(req, prior.error.code, prior.error.details)
 }
 
