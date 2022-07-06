@@ -10,17 +10,17 @@ export default {
   dbs: {
     tbsByron: {
       name: 'tbsByron',
-      mongo: { name: 'tbs-byron' },
+      mongoName: 'tbs-byron',
       collections
     },
     tbsTweed: {
       name: 'tbsTweed',
-      mongo: { name: 'tbs-tweed' },
+      mongoName: 'tbs-tweed',
       collections
     },
     tbsTest: {
       name: 'tbsTest',
-      mongo: { name: 'tbs-test1' },
+      mongoName: 'tbs-test1',
       collections
     },
   }

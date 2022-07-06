@@ -16,7 +16,7 @@ export default {
     },
     // the mongo name is the bakery id from bakeworks db
     bakery: {
-      name: '[bakeworks.bakeries._id]',
+      name: null, // `bakery-${bakeworks.bakeries._id}`,
       collections: BAKERY_COLLECTIONS
     },
   }
