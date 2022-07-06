@@ -9,10 +9,7 @@ function resolveJoin(fromName, fromObj, fromProp, toName, toObjs, toProp = '_id'
   const result = typeof toObjs === 'object'
     ? toObjs[fromVal]
     : toObjs.find(e => e[toProp] === fromVal)
-  if (result === undefined) {
-    throw new Error(`resolveJoin failed: ${fromName}.${fromProp}=${fromVal} not found in ${toObjs.length} ${toName}.${toProp}`)
-  }
-  return result
+  return result // may be null or undefined
 }
 
 // return an object of given objects keyed by their _ids

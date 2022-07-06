@@ -19,26 +19,26 @@ const SHOW_OPTIONS = [SHOW_ALL, SHOW_NONZERO, SHOW_SPECIAL, SHOW_ZERO]
 const SHOW_OPTIONS_NO_SPECIAL = [SHOW_ALL, SHOW_NONZERO, SHOW_ZERO]
 const PERIOD_FORMAT = dateUtil.DAY_MONTH_NAME_LONG
 
-const ZERO_QTYS = [0, 0, 0, 0, 0, 0, 0]
-const NULL_QTYS = [-1, -1, -1, -1, -1, -1, -1]
+const ZERO_QTYS = { sun: 0, mon: 0, tue: 0, wed: 0, thu: 0, fri: 0, sat: 0 }
+const NULL_QTYS = { sun: -1, mon: -1, tue: -1, wed: -1, thu: -1, fri: -1, sat: -1 }
 
 const DAY_TAGS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 const WEEK_TOT_TAG = 'tot'
 
 const DEFAULT_N_NEARBY_WEEKS = 8
 
-function dayIndex (dayTag) {
+function dayIndex(dayTag) {
   const i = DAY_TAGS.indexOf(dayTag)
   if (i < 0) throw new Error(`lib.bakeworks.order: invalid day tag '${dayTag}'`)
   return i
 }
 
-function itemDebugString (item) {
+function itemDebugString(item) {
   return `item = { customer: ${item.customer.name}, product: ${item.product.name}, week: ${item.week}, standing: ${JSON.stringify(item.standing)}, current: ${JSON.stringify(item.current)}`
 }
 
 // week should be 'standing' or 'YYYYMMDD'
-function isWeekStanding (week) {
+function isWeekStanding(week) {
   return week === STANDING_WEEK
 }
 
@@ -48,23 +48,23 @@ function initialQtys(week) {
   return isWeekStanding(week) ? ZERO_QTYS : NULL_QTYS
 }
 
-function isItemStanding (item) {
+function isItemStanding(item) {
   return isWeekStanding(item.week)
 }
 
-function isItemStandingQuantity (item, day) {
+function isItemStandingQuantity(item, day) {
   return item.current[day] === item.standing[day]
 }
 
-function isItemSpecialQuantity (item, day) {
+function isItemSpecialQuantity(item, day) {
   return !(isItemStanding(item) || isItemStandingQuantity(item, day))
 }
 
-function __itemTotal (qtys) {
+function __itemTotal(qtys) {
   return DAY_TAGS.reduce((sum, day) => sum + parseInt(qtys[day]), 0)
 }
 
-function __itemSpecialDayCount (item) {
+function __itemSpecialDayCount(item) {
   var sum = 0
   DAY_TAGS.forEach((day) => {
     if (isItemSpecialQuantity(item, day) && parseInt(item.current[day]) > 0) {
@@ -74,12 +74,12 @@ function __itemSpecialDayCount (item) {
   return sum
 }
 
-function __setItemQuantity (qtys, day, qty) {
+function __setItemQuantity(qtys, day, qty) {
   qtys[day] = parseInt(qty)
   qtys.tot = __itemTotal(qtys)
 }
 
-function setItemQuantity (item, day, qty) {
+function setItemQuantity(item, day, qty) {
   __setItemQuantity(item.current, day, qty)
   // keep standing and current identical if order is standing
   if (isItemStanding(item)) {
@@ -87,29 +87,29 @@ function setItemQuantity (item, day, qty) {
   }
 }
 
-function setItemQuantityToStanding (item, day) {
+function setItemQuantityToStanding(item, day) {
   if (!isItemStanding(item)) {
     setItemQuantity(item, day, item.standing[day])
   }
 }
 
-function itemTotal (item, source = 'current') {
+function itemTotal(item, source = 'current') {
   return __itemTotal(item[source])
 }
 
-function itemsTotal (items) {
+function itemsTotal(items) {
   return items.reduce((sum, item) => sum + itemTotal(item), 0)
 }
 
-function uniqueItemsCount (items) {
+function uniqueItemsCount(items) {
   return items.reduce((count, item) => count + (itemTotal(item) === 0 ? 0 : 1), 0)
 }
 
-function specialItemsCount (items) {
+function specialItemsCount(items) {
   return items.reduce((count, item) => count + __itemSpecialDayCount(item), 0)
 }
 
-function nearbyWeeksAsPeriods (fmt = PERIOD_FORMAT, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
+function nearbyWeeksAsPeriods(fmt = PERIOD_FORMAT, nWeeks = DEFAULT_N_NEARBY_WEEKS) {
   const dates = dateUtil.nearbyWeeksDates(nWeeks)
   const tags = dateUtil.nearbyWeeksTags(nWeeks)
   const labels = dateUtil.nearbyWeeksLabels(fmt, nWeeks)
@@ -128,24 +128,24 @@ function nearbyWeeksAsPeriods (fmt = PERIOD_FORMAT, nWeeks = DEFAULT_N_NEARBY_WE
   return result
 }
 
-function periods (dateFormat = PERIOD_FORMAT) {
+function periods(dateFormat = PERIOD_FORMAT) {
   const standing = { isStanding: true, index: null, start: null, finish: null, tag: STANDING_LABEL, label: STANDING_LABEL }
   return [standing].concat(nearbyWeeksAsPeriods(dateFormat))
 }
 
-function periodAsWeek (period) {
+function periodAsWeek(period) {
   return period.isStanding ? 'standing' : dateUtil.format(period.start, dateUtil.YYYYMMDD)
 }
 
-function isMatchingItem (a, b) {
+function isMatchingItem(a, b) {
   return a.customer._id === b.customer._id && a.product._id === b.product._id
 }
 
-function findMatchingItem (item, items) {
+function findMatchingItem(item, items) {
   return items.find(candidate => isMatchingItem(candidate, item))
 }
 
-function removeMatchingItem (item, items) {
+function removeMatchingItem(item, items) {
   const fn = `api.order.removeMatchingItem(customer._id=${item.customer._id}, product._id=${item.product._id})`
   console.log(fn)
   const i = items.findIndex(candidate => isMatchingItem(candidate, item))
@@ -158,36 +158,33 @@ function removeMatchingItem (item, items) {
   return items
 }
 
-function matchingSpecial (standingOrder, specialOrders) {
+function matchingSpecial(standingOrder, specialOrders) {
   return specialOrders.find(candidate => isMatchingItem(standingOrder, candidate))
 }
 
 // Map array quantities to object with DAY_TAGS as keys.
 // Includes weekly total keyed with WEEK_TOT_TAG.
-function mapQtysToDays (quantities) {
-  const result = { }
-  var i = -1
-  DAY_TAGS.forEach(tag => {
-    result[tag] = quantities[i += 1]
-  })
-  result[WEEK_TOT_TAG] = quantities.reduce((sum, v) => sum + parseInt(v), 0)
+function qtysWithTotal(quantities) {
+  const result = { ...quantities }
+  let tot = 0
+  for (const day in DAY_TAGS) {
+    tot += quantities[day]
+  }
+  result[WEEK_TOT_TAG] = tot
   return result
 }
 
 // Takes standing and special quantities and returns object
 // with standing and current quantities, resolving special/standing.
-// Given quantities should 7-element arrays mapping
-// to each day of the week.
+// Given quantities objects: { sun: ... sat: }
 function resolveQtys(standingQtys, specialQtys) {
-  const resolve = (qtys, dflt) => {
-    return qtys === undefined ? dflt : ((typeof qtys === 'string') ? csvUtil.parseIntArray(qtys) : qtys)
-  }
+  const resolve = (qtys, dflt) => qtys || dflt
   const standing = resolve(standingQtys, ZERO_QTYS)
   const special = resolve(specialQtys, NULL_QTYS)
-  const current = [...standing] // clone
-  for (let i = 0; i < 7; i++) {
-    const q = special[i]
-    current[i] = q < 0 ? standing[i] : q
+  const current = { ...standing }  // clone
+  for (const day in DAY_TAGS) {
+    const q = special[day]
+    current[day] = q < 0 ? standing[day] : q
   }
   return {
     standing: standing,
@@ -201,7 +198,7 @@ function resolveToWeek(weekOrPeriod) {
 
 // standingQtys and specialQtys are optional and will appropriately default.
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
-function newUnresolvedItem (customerId, productId, weekOrPeriod, standingQtys, specialQtys) {
+function newUnresolvedItem(customerId, productId, weekOrPeriod, standingQtys, specialQtys) {
   const week = resolveToWeek(weekOrPeriod)
   return {
     customerId,
@@ -213,64 +210,28 @@ function newUnresolvedItem (customerId, productId, weekOrPeriod, standingQtys, s
 
 // weekOrPeriod should be 'standing' or 'YYYYMMDD', or a period object
 // standing and current quantities in item will be initialised to zero
-function newResolvedItem (customer, product, weekOrPeriod) {
+function newResolvedItem(customer, product, weekOrPeriod) {
   const week = resolveToWeek(weekOrPeriod)
   return {
     customer,
     product,
     week,
-    standing: mapQtysToDays(ZERO_QTYS),
-    current: mapQtysToDays(ZERO_QTYS),
+    standing: qtysWithTotal(ZERO_QTYS),
+    current: qtysWithTotal(ZERO_QTYS),
   }
 }
 
 // item as returned by newUnresolvedItem
 // customers and products to resolve customerId and productId
 // returns item with customer and product resolved
-function resolveItem (item, customers, products) {
+function resolveItem(item, customers, products) {
   return {
     customer: customers.find(e => e._id === item.customerId),
     product: products.find(e => e._id === item.productId),
     week: item.week,
-    standing: mapQtysToDays(item.standing),
-    current: mapQtysToDays(item.current)
+    standing: qtysWithTotal(item.standing),
+    current: qtysWithTotal(item.current)
   }
-}
-
-// standing and current are objects of form { sun: 0, mon: 1, ... }
-// returns object of form{ standing: [0,0,0,0,0,0,0], special: [0,0,0,0,0,0,0]}
-function quantitiesByDayToArrays (standingByDay, currentByDay) {
-  const standing = []
-  const special = []
-  DAY_TAGS.forEach(day => {
-    const standingQty = standingByDay[day]
-    const specialQty = currentByDay[day]
-    standing.push(standingQty)
-    special.push(specialQty < 0 || specialQty === standingQty ? -1 : specialQty)
-  })
-  return {
-    standing: standing,
-    special: special
-  }
-}
-
-// returns object of form{ standing: [0,0,0,0,0,0,0], special: [0,0,0,0,0,0,0]}
-function itemQuantitiesToArrays (item) {
-  return quantitiesByDayToArrays(item.standing, item.current)
-}
-
-// deprecated: legacy only
-function quantitiesByDayToCSVs (standingByDay, currentByDay) {
-  const a = quantitiesByDayToArrays(standingByDay, currentByDay)
-  return {
-    standing: a.standing.join(COMMA),
-    special: a.special.join(COMMA)
-  }
-}
-
-// deprecated: legacy only
-function itemQuantitiesToCSVs (item) {
-  return quantitiesByDayToCSVs(item.standing, item.current)
 }
 
 export default  {
@@ -319,9 +280,5 @@ export default  {
   removeMatchingItem,
   matchingSpecial,
 
-  mapQtysToDays,
-  quantitiesByDayToArrays,
-  itemQuantitiesToArrays,
-  quantitiesByDayToCSVs,
-  itemQuantitiesToCSVs
+  qtysWithTotal
 }
