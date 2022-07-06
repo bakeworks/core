@@ -2,9 +2,9 @@ import strUtil from '../../../util/string.js'
 
 const hasXeroInvoicing = customer => customer.xeroInvoicing
 
-const setXeroInvoicing = (customer, _bool) => customer.xero_invoicing = _bool,
+const setXeroInvoicing = (customer, _bool) => customer.xero_invoicing = _bool
 
-const hasDelivery = customer => customer.delivery_run.length > 0
+const hasDelivery = customer => customer.deliveryRun.length > 0
 
 const hasXeroId = customer => {
   return customer.xero_invoicing !== undefined && customer.xero_invoicing.length > 0
@@ -15,6 +15,7 @@ const sortCustomers = (customers, prop = 'name') => {
 }
 
 export default {
+  hasDelivery,
   hasXeroInvoicing,
   setXeroInvoicing,
   hasXeroId,
