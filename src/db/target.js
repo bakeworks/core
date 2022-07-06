@@ -76,12 +76,25 @@ const adminDb = {
   dbName: 'admin',
 }
 
+const BAKERY_DB_PREFIX = 'bakery-'
+
+function isBakeryDbName(dbName) {
+  return dbName.startsWith(BAKERY_DB_PREFIX)
+}
+
+function bakeryDbName(bakeryId) {
+  return `${BAKERY_DB_PREFIX}${bakeryId}`
+}
+
 export default {
   domains: { v2: domainV2, v3: domainV3 },
   resolve,
   bakeworks,
   bakery,
   legacyV2,
-  adminDb
+  adminDb,
+  BAKERY_DB_PREFIX,
+  isBakeryDbName,
+  bakeryDbName
 }
 
