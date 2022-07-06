@@ -37,6 +37,7 @@ export default {
       _id: 'objectId',
       code: 'string',
       name: 'string',
+      xeroId: 'string',
       prices: {
         retail: 'decimal',
         wholesale: 'decimal'
