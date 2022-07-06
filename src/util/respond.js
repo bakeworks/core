@@ -135,7 +135,7 @@ function httpCode(response) {
   if (response.success) {
     return 200
   }
-  const code = HTTP_CODE[response.error.code]
+  const code = HTTP_CODES[response.error.code]
   if (!code) {
     console.debug('==============================================================================')
     console.debug(`bakeworks-core/util/response/httpCode(res.error: ${JSON.stringify(res.error)})`)
