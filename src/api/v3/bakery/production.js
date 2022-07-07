@@ -77,6 +77,13 @@ const RECIPE_TYPES = {
     inputCount: { min: 1, max: 1 },
     inputTypes: ['shape']
     },
+  assemble: {
+    code: 'assemble', label: 'Assemble', plural: 'Assembles',
+    batchMeasure: BATCH_MEASURES.units.code,
+    batchModes: [],
+    inputCount: { min: 1, max: 1 },
+    inputTypes: ['bake', 'fill', 'mix', 'ingredient']
+    },
   top: {
     code: 'top', label: 'Top', plural: 'Tops',
     batchMeasure: BATCH_MEASURES.units.code,
