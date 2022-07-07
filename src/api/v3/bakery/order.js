@@ -167,7 +167,7 @@ function matchingSpecial(standingOrder, specialOrders) {
 // Includes weekly total keyed with WEEK_TOT_TAG.
 function qtysTotal(quantities) {
   let tot = 0
-  for (const day in DAY_TAGS) {
+  for (const day of DAY_TAGS) {
     tot += quantities[day]
   }
   return tot
@@ -178,7 +178,7 @@ function qtysTotal(quantities) {
 function qtysWithTotal(quantities) {
   const result = { ...quantities }
   let tot = 0
-  for (const day in DAY_TAGS) {
+  for (const day of DAY_TAGS) {
     tot += quantities[day]
   }
   result[WEEK_TOT_TAG] = tot
