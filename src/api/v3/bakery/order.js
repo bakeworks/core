@@ -162,6 +162,17 @@ function matchingSpecial(standingOrder, specialOrders) {
   return specialOrders.find(candidate => isMatchingItem(standingOrder, candidate))
 }
 
+
+// Map array quantities to object with DAY_TAGS as keys.
+// Includes weekly total keyed with WEEK_TOT_TAG.
+function qtysTotal(quantities) {
+  let tot = 0
+  for (const day in DAY_TAGS) {
+    tot += quantities[day]
+  }
+  return tot
+}
+
 // Map array quantities to object with DAY_TAGS as keys.
 // Includes weekly total keyed with WEEK_TOT_TAG.
 function qtysWithTotal(quantities) {
@@ -280,5 +291,6 @@ export default  {
   removeMatchingItem,
   matchingSpecial,
 
-  qtysWithTotal
+  qtysWithTotal,
+  qtysTotal
 }
