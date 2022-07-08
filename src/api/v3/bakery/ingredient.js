@@ -343,10 +343,10 @@ const ADDITIVES_TEXT = `–:Monk fruit extract or luo han guo extract
 function parseAdditivesText() {
   const entries = ADDITIVES_TEXT.split(`\n`)
   const result = []
-  console.debug(`bakeworks-core.src.api.ingredient.parseAdditivesText: entries.length=${entries.length}`)
+  // console.debug(`bakeworks-core.src.api.ingredient.parseAdditivesText: entries.length=${entries.length}`)
   entries.forEach(e => {
     const [code, label] = e.split(':')
-    console.debug(`bakeworks-core.src.api.ingredient.parseAdditivesText: code=${code} label=${label}`)
+    // console.debug(`bakeworks-core.src.api.ingredient.parseAdditivesText: code=${code} label=${label}`)
   })
   return result
 }
