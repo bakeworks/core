@@ -1,4 +1,4 @@
-import uuid from '../../../util/uuid'
+import uuid from '../../../util/uuid.js'
 
 function newProductFromRecipe(recipe) {
   return {
