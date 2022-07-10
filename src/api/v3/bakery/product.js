@@ -3,8 +3,8 @@ import uuid from '../../../util/uuid.js'
 function newProductFromRecipe(recipe) {
   return {
     _id: uuid.newUUID(),
-    code: r.code,
-    name: r.name,
+    code: recipe.code,
+    name: recipe.name,
     recipeType: recipe.type,
     recipeId: recipe._id,
     xeroId: null,
