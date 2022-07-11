@@ -3,7 +3,7 @@ import uuid from '../../../util/uuid.js'
 function newProductFromRecipe(recipe) {
   return {
     _id: uuid.newUUID(),
-    code: null,
+    code: recipe.code,
     name: recipe.name,
     recipeType: recipe.type,
     recipeId: recipe._id,

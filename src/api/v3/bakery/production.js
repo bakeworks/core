@@ -29,85 +29,75 @@ const BATCH_MEASURES = {
 
 const RECIPE_TYPES = {
   ingredient: {
-    code: 'ingredient', label: 'Ingredient',
-    plural: 'Ingredients', adjective: 'Ingredient',
+    code: 'ingredient', label: 'Ingredient', plural: 'Ingredients',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: [],
     inputCount: { min: 0, max: 0 },
     inputTypes: [],
   },
   mix: {
-    code: 'mix', label: 'Mix',
-    plural: 'Mixes', adjective: 'Mix',
+    code: 'mix', label: 'Mix', plural: 'Mixes',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 2, max: 99 },
     inputTypes: ['ingredient', 'mix'],
-  },
+    },
   ferment: {
-    code: 'ferment', label: 'Ferment',
-    plural: 'Ferments', adjective: 'Ferment',
+    code: 'ferment', label: 'Ferment', plural: 'Ferments',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 1, max: 1 },
     inputTypes: ['mix']
-  },
+    },
   layer: {
-    code: 'layer', label: 'Layer',
-    plural: 'Layers', adjective: 'Layer',
+    code: 'layer', label: 'Layer', plural: 'Layers',
     batchMeasure: BATCH_MEASURES.kgs.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 1, max: 99  },
     inputTypes: ['ingredient', 'mix']
-  },
+    },
   shape: {
-    code: 'shape', label: 'Shape',
-    plural: 'Shapes', adjective: 'Shape',
+    code: 'shape', label: 'Shape', plural: 'Shapes',
     batchMeasure: BATCH_MEASURES.na.code,
     batchModes: [BATCH_MODES.fixed],
     inputCount: { min: 1, max: 99  },
     inputTypes: ['layer', 'mix']
-  },
+    },
   fill: {
-    code: 'fill', label: 'Fill',
-    plural: 'Fills', adjective: 'Fill',
+    code: 'fill', label: 'Fill', plural: 'Fills',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: ALL_BATCH_MODES,
     inputCount: { min: 1, max: 99  },
     inputTypes: ['shape', 'mix', 'ingredient']
-  },
+    },
   bake: {
-    code: 'bake', label: 'Bake',
-    plural: 'Bakes', adjective: 'Baked',
+    code: 'bake', label: 'Bake', plural: 'Bakes',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 1, max: 1 },
     inputTypes: ['shape']
-  },
+    },
   assemble: {
-    code: 'assemble', label: 'Assemble',
-    plural: 'Assembles', adjective: 'Assembled',
+    code: 'assemble', label: 'Assemble', plural: 'Assembles',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 1, max: 1 },
     inputTypes: ['bake', 'fill', 'mix', 'ingredient']
-  },
+    },
   top: {
-    code: 'top', label: 'Top',
-    plural: 'Tops', adjective: 'Top',
+    code: 'top', label: 'Top', plural: 'Tops',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 2, max: 99 },
     inputTypes: ['bake', 'mix', 'ingredient']
-  },
+    },
   slice: {
-    code: 'slice', label: 'Slice',
-    plural: 'Slices',
+    code: 'slice', label: 'Slice', plural: 'Slices',
     batchMeasure: BATCH_MEASURES.units.code,
     batchModes: [],
     inputCount: { min: 1, max: 1 },
     inputTypes: ['bake']
-  },
+    },
   package: {
     code: 'package', label: 'Package', plural: 'Packages',
     batchMeasure: BATCH_MEASURES.units.code,
